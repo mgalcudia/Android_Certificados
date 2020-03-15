@@ -5,6 +5,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,6 +18,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class RegistroActivity extends AppCompatActivity {
 
@@ -85,9 +87,8 @@ public class RegistroActivity extends AppCompatActivity {
                     map.put("name", name);
                     map.put("email", email);
                     map.put("password", password);
-
-                    String idUSer= mAuth.getCurrentUser().getUid();
-
+                   //String idUSer= mAuth.getCurrentUser().getUid();
+                    String idUSer= Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
                     mDatabase.child("user").child(idUSer).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task2) {
