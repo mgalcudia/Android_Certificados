@@ -4,6 +4,7 @@ package com.proyecto.Certificado;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import android.view.View;
@@ -94,8 +95,8 @@ public class RegistroActivity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<Void> task2) {
                             if(task2.isSuccessful()){
                                 Toast.makeText(RegistroActivity.this, "Usuario Registado", Toast.LENGTH_LONG).show();
-
-                             //   finish();
+                                startActivity(new Intent(RegistroActivity.this, InicioActivity.class));
+                              finish();
 
                             }else {
                                 Toast.makeText(RegistroActivity.this,
