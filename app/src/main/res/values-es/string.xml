@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Certificados</string>
+
+    //Botones
+    <string name="btnirLoguin" >Ya tengo cuenta</string>
+    <string name="btnirRegistro">Registrar Cuenta</string>
+    <string name="btniniciarSesion">Iniciar Sesion</string>
+    <string name="btnRegistroUsuario">Registrar Usuario</string>
+
+
+
+
+    //Edit text
+    <string name="editextPassword">Contraseña</string>
+    <string name="editextEmail">Correo Electrónio</string>
+    <string name="editextUserName">Nombre</string>
+
+
+</resources>

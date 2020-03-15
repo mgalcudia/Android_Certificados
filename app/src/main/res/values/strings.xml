@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Certificates</string>
+    //Botones
+    <string name="btnirLoguin">I already have an account</string>
+    <string name="btnirRegistro">Register Account</string>
+    <string name="btniniciarSesion">Log in</string>
+    <string name="btnRegistroUsuario">Register User</string>
+
+    //Edit text
+    <string name="editextPassword">Password</string>
+    <string name="editextEmail">Email</string>
+    <string name="editextUserName">Name</string>
+</resources>
