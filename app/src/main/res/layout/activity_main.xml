@@ -7,32 +7,41 @@
     tools:context=".MainActivity">
 
 
+    <TextView
+        android:id="@+id/textViewBienvenida"
+        android:layout_width="324dp"
+        android:layout_height="141dp"
+        android:layout_marginTop="152dp"
+        android:text="@string/textViewBienvenida"
+        android:textAlignment="center"
+        android:textSize="36sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <Button
         android:id="@+id/btnirRegistro"
         android:layout_width="405dp"
         android:layout_height="54dp"
-        android:layout_marginTop="304dp"
-        android:text="@string/btnirRegistro"
-        android:onClick="irRegistrar"
+        android:layout_marginTop="40dp"
         android:background="@color/colorAccent"
+        android:onClick="irRegistrar"
+
+        android:text="@string/btnirRegistro"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="OnClick" />
+        app:layout_constraintTop_toBottomOf="@+id/btnirLoguin" />
 
     <Button
         android:id="@+id/btnirLoguin"
         android:layout_width="405dp"
         android:layout_height="54dp"
-        android:layout_marginTop="72dp"
-        android:text="@string/btnirLoguin"
+        android:layout_marginTop="140dp"
         android:background="#8FDA03"
         android:onClick="irLoguin"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="@string/btnirLoguin"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnirRegistro"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewBienvenida" />
 </androidx.constraintlayout.widget.ConstraintLayout>

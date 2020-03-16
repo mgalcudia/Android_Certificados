@@ -11,7 +11,7 @@
         android:id="@+id/textViewBienvenida"
         android:layout_width="324dp"
         android:layout_height="141dp"
-        android:layout_marginTop="128dp"
+        android:layout_marginTop="100dp"
         android:text="@string/textViewBienvenida"
         android:textAlignment="center"
         android:textSize="36sp"
@@ -29,13 +29,14 @@
         android:layout_height="54dp"
         android:layout_marginBottom="40dp"
         android:background="#8FDA03"
-        android:textColor="@android:color/widget_edittext_dark"
-
         android:text="@string/btnAgregarTitulo"
+
+        android:textColor="@android:color/widget_edittext_dark"
 
 
         app:layout_constraintBottom_toTopOf="@+id/btnlistarTitulos"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
@@ -54,13 +55,13 @@
         android:id="@+id/btnBuscarCertificados"
         android:layout_width="405dp"
         android:layout_height="54dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="104dp"
         android:background="#8FDA03"
-        android:textColor="@android:color/widget_edittext_dark"
 
         android:text="@string/btnBuscarCertificados"
+        android:textColor="@android:color/widget_edittext_dark"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="548dp" />
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
