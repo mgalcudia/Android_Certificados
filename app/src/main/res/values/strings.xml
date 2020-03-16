@@ -5,9 +5,17 @@
     <string name="btnirRegistro">Register Account</string>
     <string name="btniniciarSesion">Log in</string>
     <string name="btnRegistroUsuario">Register User</string>
+    <string name="btnAgregarTitulo">Add Certificates</string>
+    <string name="btnlistarTitulos">List Certificates</string>
+    <string name="btnBuscarCertificados">Search Certificates</string>
 
     //Edit text
     <string name="editextPassword">Password</string>
     <string name="editextEmail">Email</string>
     <string name="editextUserName">Name</string>
+
+
+    //text view
+    <string name="textViewBienvenida">Welcome to the application S.A.S certificates</string>
+    <string name="btnlistartitulos">btnlistarTitulos</string>
 </resources>

@@ -7,6 +7,10 @@
     <string name="btnirRegistro">Registrar Cuenta</string>
     <string name="btniniciarSesion">Iniciar Sesion</string>
     <string name="btnRegistroUsuario">Registrar Usuario</string>
+    <string name="btnAgregarTitulo">Agregar Certificados</string>
+    <string name="btnlistarTitulos">Listar Certificados</string>
+    <string name="btnBuscarCertificados">Buscar Certificados</string>
+
 
 
 
@@ -15,6 +19,9 @@
     <string name="editextPassword">Contraseña</string>
     <string name="editextEmail">Correo Electrónio</string>
     <string name="editextUserName">Nombre</string>
+
+    //text view
+    <string name="textViewBienvenida">Bienvenido a la aplicación certificados S.A.S</string>
 
 
 </resources>
