@@ -9,13 +9,21 @@
     <string name="btnlistarTitulos">List Certificates</string>
     <string name="btnBuscarCertificados">Search Certificates</string>
 
+
     //Edit text
     <string name="editextPassword">Password</string>
     <string name="editextEmail">Email</string>
     <string name="editextUserName">Name</string>
+    <string name="editTextTituloCertificad">Certified Name</string>
+    <string name="editTextEntidadCertificado">Issuing entity</string>
+    <string name="editTextHorasCertificado">Certificate Hours</string>
+    <string name="editTextCreditoCertificado">Certificate Credits</string>
+    <string name="editTextFechaInicio">Start date</string>
+    <string name="editTextFechaFin">End date</string>
 
 
     //text view
     <string name="textViewBienvenida">Welcome to the application S.A.S certificates</string>
-    <string name="btnlistartitulos">btnlistarTitulos</string>
+    <string name="textViewAgregaTitulo">Add your certificate</string>
+
 </resources>

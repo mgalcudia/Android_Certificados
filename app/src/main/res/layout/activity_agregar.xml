@@ -6,14 +6,102 @@
     android:layout_height="match_parent"
     tools:context="com.proyecto.Certificado.AgregarActivity">
 
-    <EditText
-        android:id="@+id/editTexEmail"
-        android:layout_width="320dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="212dp"
-        android:hint="@string/editextEmail"
+    <TextView
+        android:id="@+id/textViewAgregaTitulo"
+        android:layout_width="425dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/textViewAgregaTitulo"
+        android:textAlignment="center"
+        android:textSize="36sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextTituloCertificado"
+        android:layout_width="320dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:hint="@string/editTextTituloCertificad"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.351"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewAgregaTitulo" />
+
+    <EditText
+        android:id="@+id/editTextEntidadCertificado"
+        android:layout_width="318dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="52dp"
+        android:hint="@string/editTextEntidadCertificado"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.351"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTituloCertificado" />
+
+    <EditText
+        android:id="@+id/editTextHorasCertificado"
+        android:layout_width="174dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="36dp"
+        android:ems="10"
+        android:hint="@string/editTextHorasCertificado"
+        android:inputType="number"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextEntidadCertificado" />
+
+    <EditText
+        android:id="@+id/editTextCreditoCertificado"
+        android:layout_width="174dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="36dp"
+        android:ems="10"
+        android:hint="@string/editTextCreditoCertificado"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.483"
+        app:layout_constraintStart_toEndOf="@+id/editTextHorasCertificado"
+        app:layout_constraintTop_toBottomOf="@+id/editTextEntidadCertificado" />
+
+    <EditText
+        android:id="@+id/editTextFechaInicio"
+        android:layout_width="174dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="28dp"
+        android:ems="10"
+        android:inputType="date"
+        android:hint="@string/editTextFechaInicio"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextHorasCertificado" />
+
+    <EditText
+        android:id="@+id/editTextFechaFin"
+        android:layout_width="174dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="16dp"
+        android:ems="10"
+        android:inputType="date"
+        android:hint="@string/editTextFechaFin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextCreditoCertificado" />
+
+    <EditText
+        android:id="@+id/etPlannedDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:clickable="true"
+        android:focusable="false"
+        android:hint="fecha"
+        android:inputType="date"
+        android:maxLines="1"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:layout_editor_absoluteY="509dp" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

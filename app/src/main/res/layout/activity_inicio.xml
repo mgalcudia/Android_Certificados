@@ -33,7 +33,7 @@
 
         android:textColor="@android:color/widget_edittext_dark"
 
-
+        android:onClick="AgregarTitulo"
         app:layout_constraintBottom_toTopOf="@+id/btnlistarTitulos"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -47,6 +47,7 @@
         android:background="#8FDA03"
         android:text="@string/btnlistarTitulos"
         android:textColor="@android:color/widget_edittext_dark"
+        android:onClick="listarTitulos"
         app:layout_constraintBottom_toTopOf="@+id/btnBuscarCertificados"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -60,6 +61,7 @@
 
         android:text="@string/btnBuscarCertificados"
         android:textColor="@android:color/widget_edittext_dark"
+        android:onClick="buscarCertificados"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"

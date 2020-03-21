@@ -27,4 +27,15 @@ public class InicioActivity extends AppCompatActivity {
     }
 
 
+    public void AgregarTitulo(View view) {
+        startActivity(new Intent(InicioActivity.this, AgregarActivity.class));
+    }
+
+    public void listarTitulos(View view) {
+       // startActivity(new Intent(InicioActivity.this, AgregarActivity.class));
+    }
+
+    public void buscarCertificados(View view) {
+      //  startActivity(new Intent(InicioActivity.this, AgregarActivity.class));
+    }
 }
