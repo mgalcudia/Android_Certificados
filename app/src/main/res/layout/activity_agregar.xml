@@ -66,17 +66,6 @@
         app:layout_constraintStart_toEndOf="@+id/editTextHorasCertificado"
         app:layout_constraintTop_toBottomOf="@+id/editTextEntidadCertificado" />
 
-    <EditText
-        android:id="@+id/editTextFechaInicio"
-        android:layout_width="174dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="28dp"
-        android:ems="10"
-        android:inputType="date"
-        android:hint="@string/editTextFechaInicio"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextHorasCertificado" />
 
     <EditText
         android:id="@+id/editTextFechaFin"
@@ -85,23 +74,15 @@
         android:layout_marginTop="28dp"
         android:layout_marginEnd="16dp"
         android:ems="10"
-        android:inputType="date"
+        android:clickable="true"
+        android:focusable="true"
+        android:inputType="none"
+        android:textAlignment="center"
         android:hint="@string/editTextFechaFin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextCreditoCertificado" />
 
-    <EditText
-        android:id="@+id/etPlannedDate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:clickable="true"
-        android:focusable="false"
-        android:hint="fecha"
-        android:inputType="date"
-        android:maxLines="1"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:layout_editor_absoluteY="509dp" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
