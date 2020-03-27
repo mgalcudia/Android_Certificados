@@ -29,10 +29,10 @@ public class PruebaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_prueba);
         mAuth= FirebaseAuth.getInstance();
         mDatabase= FirebaseDatabase.getInstance().getReference();
-        mButtonSingout = (Button) findViewById(R.id.btnCerrarSesion);
-        mTextViewName = (TextView) findViewById(R.id.textViewName);
-        mTextViewEmail = (TextView) findViewById(R.id.textViewEmail);
-        mTextViewIdUser = (TextView) findViewById(R.id.textViewIdUser);
+        mButtonSingout = findViewById(R.id.btnCerrarSesion);
+        mTextViewName = findViewById(R.id.textViewName);
+        mTextViewEmail = findViewById(R.id.textViewEmail);
+        mTextViewIdUser = findViewById(R.id.textViewIdUser);
         getUserInfo();
     }
 

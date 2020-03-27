@@ -25,5 +25,6 @@
     //text view
     <string name="textViewBienvenida">Welcome to the application S.A.S certificates</string>
     <string name="textViewAgregaTitulo">Add your certificate</string>
+    <string name="textViewCorteBolsa">Corte de bolsa</string>
 
 </resources>
