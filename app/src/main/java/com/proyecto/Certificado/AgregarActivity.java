@@ -19,17 +19,17 @@ public class AgregarActivity extends AppCompatActivity {
     private int dia,mes,anio;
     //variables numberPicker
     private NumberPicker numberPicker;
-
+    String strnumberpicker;
     //variables titulo
-    private EditText nombreCertificado, entidadEmisora;
+    private EditText nombreCertificado, entidadEmisora, horasCertificado, creditosCertificado;
 
-    String strnombreCertificado, strentidadEmisora;
+    String strnombreCertificado, strentidadEmisora,strhorasCertificado,strcreditosCertificado;
 
     //Creacion de listener para el datepicker
     private DatePickerDialog.OnDateSetListener listenerDatepicker= new DatePickerDialog.OnDateSetListener() {
         @Override
         public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-            //Se llama cuando se selecciona la fecha. Nos pasa la vista y asignamos valos a las variables
+            //Se llama cuando se selecciona la fecha. Nos pasa la vista y asignamos valor a las variables
             anio= year;
             mes= month;
             dia= dayOfMonth;
@@ -55,6 +55,8 @@ public class AgregarActivity extends AppCompatActivity {
         //obtenemos el valor de nombre certificado
         nombreCertificado= findViewById(R.id.editTextTituloCertificado);
         entidadEmisora= findViewById(R.id.editTextEntidadCertificado);
+        horasCertificado = findViewById(R.id.editTextHorasCertificado);
+        creditosCertificado =findViewById(R.id.editTextCreditoCertificado);
 
         //instanciamos el objeto
         fechaFin= findViewById(R.id.editTextFechaFin);
@@ -93,13 +95,24 @@ public class AgregarActivity extends AppCompatActivity {
         numberPicker.setMinValue(2000);
         numberPicker.setMaxValue(anio);
         numberPicker.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
+        numberPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
+            @Override
+            public void onValueChange(NumberPicker numberPicker, int i, int i1) {
+                //texto.setText("Valor anterior: "+i+" Valor Nuevo: "+i1);
 
+                strnumberpicker =String.valueOf(numberPicker.getValue());
+
+            }
+        });
 
     }
 
     public void AgregarUnTitulo(View view) {
         strnombreCertificado=nombreCertificado.getText().toString().trim();
         strentidadEmisora=entidadEmisora.getText().toString().trim();
-        Toast.makeText(AgregarActivity.this, ""+ strnombreCertificado+"  "+strentidadEmisora, Toast.LENGTH_LONG).show();
+        strhorasCertificado= horasCertificado.getText().toString().trim();
+        strcreditosCertificado = creditosCertificado.getText().toString().trim();
+        Toast.makeText(AgregarActivity.this, "Nombre:"+ strnombreCertificado+"  "
+                +strentidadEmisora+"  "+strhorasCertificado+ " "+strcreditosCertificado+"  Año: "+strnumberpicker, Toast.LENGTH_LONG).show();
     }
 }
