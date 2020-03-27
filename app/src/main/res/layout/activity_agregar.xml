@@ -28,7 +28,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.351"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewAgregaTitulo" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewAgregaTitulo"
+        android:inputType="text"
+        android:autofillHints="" />
 
     <EditText
         android:id="@+id/editTextEntidadCertificado"
@@ -39,7 +41,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.351"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTituloCertificado" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextTituloCertificado"
+        android:inputType="text"
+        android:autofillHints="" />
 
     <EditText
         android:id="@+id/editTextHorasCertificado"
@@ -51,8 +55,8 @@
         android:hint="@string/editTextHorasCertificado"
         android:inputType="number"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextEntidadCertificado" />
-
+        app:layout_constraintTop_toBottomOf="@+id/editTextEntidadCertificado"
+        android:autofillHints="" />
     <EditText
         android:id="@+id/editTextCreditoCertificado"
         android:layout_width="174dp"
@@ -64,9 +68,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.483"
         app:layout_constraintStart_toEndOf="@+id/editTextHorasCertificado"
-        app:layout_constraintTop_toBottomOf="@+id/editTextEntidadCertificado" />
-
-
+        app:layout_constraintTop_toBottomOf="@+id/editTextEntidadCertificado"
+        android:autofillHints="" />
     <EditText
         android:id="@+id/editTextFechaFin"
         android:layout_width="174dp"
@@ -78,11 +81,7 @@
         android:focusable="true"
         android:inputType="none"
         android:textAlignment="center"
-        android:hint="@string/editTextFechaFin"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextCreditoCertificado" />
-
-
-
-
+        app:layout_constraintTop_toBottomOf="@+id/editTextCreditoCertificado"
+        android:autofillHints="" />
 </androidx.constraintlayout.widget.ConstraintLayout>

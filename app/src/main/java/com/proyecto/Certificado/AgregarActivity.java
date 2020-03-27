@@ -56,8 +56,10 @@ public class AgregarActivity extends AppCompatActivity {
         //Hace que el datepicker se muestre al clickear el edixText
 
         fechaFin.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
+
                 DatePickerDialog dialogoDeFecha = new DatePickerDialog(AgregarActivity.this,listenerDatepicker,anio,mes,dia);
 
                 //Muestra
