@@ -8,6 +8,7 @@
     <string name="btnAgregarTitulo">Add Certificates</string>
     <string name="btnlistarTitulos">List Certificates</string>
     <string name="btnBuscarCertificados">Search Certificates</string>
+    <string name="btnSubirCertificado">Register certificate</string>
 
 
     //Edit text
@@ -25,6 +26,6 @@
     //text view
     <string name="textViewBienvenida">Welcome to the application S.A.S certificates</string>
     <string name="textViewAgregaTitulo">Add your certificate</string>
-    <string name="textViewCorteBolsa">Corte de bolsa</string>
+    <string name="textViewCorteBolsa">bag cut</string>
 
 </resources>

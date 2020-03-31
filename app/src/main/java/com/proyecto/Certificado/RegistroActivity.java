@@ -17,6 +17,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.proyecto.Certificado.modelo.Persona;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -35,7 +37,7 @@ public class RegistroActivity extends AppCompatActivity {
 
     //Creamos el objeto FIrebase
     FirebaseAuth mAuth;
-    DatabaseReference mDatabase;
+    DatabaseReference mDatabaseReference;
 
 
     @Override
@@ -44,7 +46,7 @@ public class RegistroActivity extends AppCompatActivity {
         setContentView(R.layout.activity_registro);
         //Instanciamos el objeto firebase
         mAuth= FirebaseAuth.getInstance();
-        mDatabase= FirebaseDatabase.getInstance().getReference();
+        mDatabaseReference= FirebaseDatabase.getInstance().getReference();
         mEditTextName =findViewById(R.id.editTexname);
         mEditTextEmail =findViewById(R.id.editTexEmail);
         mEditTextPassword=findViewById(R.id.editPassword);
@@ -76,7 +78,7 @@ public class RegistroActivity extends AppCompatActivity {
 
     }
 
-
+/*
     private void RegisterUSer() {
         mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
 
@@ -88,7 +90,7 @@ public class RegistroActivity extends AppCompatActivity {
                     map.put("name", name);
                     map.put("email", email);
                     map.put("password", password);
-                   //String idUSer= mAuth.getCurrentUser().getUid();
+
                     String idUSer= Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
                     mDatabase.child("user").child(idUSer).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
@@ -101,6 +103,45 @@ public class RegistroActivity extends AppCompatActivity {
                             }else {
                                 Toast.makeText(RegistroActivity.this,
                                 "No se puede ir a la otra actividad", Toast.LENGTH_LONG).show();
+                            }
+
+                        }
+                    });
+
+                }else{
+                    Toast.makeText(RegistroActivity.this, "No se ha podido registra", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+
+    }
+    */
+
+    private void RegisterUSer() {
+        mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if(task.isSuccessful()){
+                    String idUSer= Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
+                    Persona p = new Persona();
+                    p.setIdUSer(idUSer);
+                    p.setEmail(email);
+                    p.setName(name);
+                    p.setPassword(password);
+
+
+                    mDatabaseReference.child("user").child(idUSer).setValue(p).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task2) {
+                            if(task2.isSuccessful()){
+                                Toast.makeText(RegistroActivity.this, "Usuario Registado", Toast.LENGTH_LONG).show();
+                                startActivity(new Intent(RegistroActivity.this, InicioActivity.class));
+                                finish();
+
+                            }else {
+                                Toast.makeText(RegistroActivity.this,
+                                        "No se puede ir a la otra actividad", Toast.LENGTH_LONG).show();
                             }
 
                         }

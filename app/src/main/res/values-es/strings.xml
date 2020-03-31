@@ -10,6 +10,7 @@
     <string name="btnAgregarTitulo">Agregar Certificados</string>
     <string name="btnlistarTitulos">Listar Certificados</string>
     <string name="btnBuscarCertificados">Buscar Certificados</string>
+    <string name="btnSubirCertificado">Registrar certificado</string>
 
 
 

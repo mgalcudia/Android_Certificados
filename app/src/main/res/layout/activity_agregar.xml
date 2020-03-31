@@ -120,11 +120,12 @@
             app:layout_constraintTop_toBottomOf="@+id/textViewCorteBolsa" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/btnSubirCertificado"
             android:layout_width="405dp"
             android:layout_height="54dp"
             android:layout_marginTop="80dp"
-            android:text="Button"
+            android:text="@string/btnSubirCertificado"
+            android:background="#8FDA03"
             android:onClick="AgregarUnTitulo"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

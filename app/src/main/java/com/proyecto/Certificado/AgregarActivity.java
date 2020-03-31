@@ -1,7 +1,6 @@
 package com.proyecto.Certificado;
 
 import android.app.DatePickerDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.DatePicker;
@@ -15,11 +14,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+import com.proyecto.Certificado.modelo.Certificado;
 
 import java.util.Calendar;
 import java.util.HashMap;
@@ -52,20 +49,14 @@ public class AgregarActivity extends AppCompatActivity {
             mes= month;
             dia= dayOfMonth;
             //Refrescamos la fecha
-            refrescarFechaEnEditText();
-
+            asignarFechaEnEditText();
         }
     };
 
 
-    public void refrescarFechaEnEditText(){
-        final Calendar calendario= Calendar.getInstance();
-        dia= calendario.get(Calendar.DAY_OF_MONTH);
-        mes= calendario.get(Calendar.MONTH);
-        anio= calendario.get(Calendar.YEAR);
+    public void asignarFechaEnEditText(){
         String fecha= String.format(Locale.getDefault(),"%02d-%02d-%02d", dia, mes+1, anio);
         //asigamos el valor del editText
-
         fechaFin.setText(fecha);
     }
 
@@ -82,16 +73,13 @@ public class AgregarActivity extends AppCompatActivity {
 
         //instanciamos el objeto
         fechaFin= findViewById(R.id.editTextFechaFin);
-        //Asignamos la fecha de hoy al editText
-        /*
+
+        //Asignamos la fecha de hoy al EditText
         final Calendar calendario= Calendar.getInstance();
         dia= calendario.get(Calendar.DAY_OF_MONTH);
         mes= calendario.get(Calendar.MONTH);
         anio= calendario.get(Calendar.YEAR);
-*/
-
-        //Asignamos la fecha de hoy al EditText
-        refrescarFechaEnEditText();
+        asignarFechaEnEditText();
         numberpicker();
 
         //hacemos referencia a firebase
@@ -126,22 +114,19 @@ public class AgregarActivity extends AppCompatActivity {
         numberPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
             public void onValueChange(NumberPicker numberPicker, int i, int i1) {
-                //texto.setText("Valor anterior: "+i+" Valor Nuevo: "+i1);
-
                 strnumberpicker =String.valueOf(numberPicker.getValue());
-
             }
         });
 
     }
-
+/*
     public void AgregarUnTitulo(View view) {
         strnombreCertificado=nombreCertificado.getText().toString().trim();
         strentidadEmisora=entidadEmisora.getText().toString().trim();
         strhorasCertificado= horasCertificado.getText().toString().trim();
         strcreditosCertificado = creditosCertificado.getText().toString().trim();
         srtfechaFinCertificado=fechaFinCertificado.getText().toString().trim();
-        final String id = mAuth.getCurrentUser().getUid();
+        final String id = Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
 
         //mapa de valores
         Map<String, Object> map= new HashMap<>();
@@ -166,7 +151,7 @@ public class AgregarActivity extends AppCompatActivity {
                         map2.put("anioCorte", strnumberpicker);
                         String idhistorico= (UUID.randomUUID().toString());
                         mDatabase.child("historicoCorte").child(idhistorico).setValue(map2);
-                        Toast.makeText(AgregarActivity.this, "Usuario Registado", Toast.LENGTH_LONG).show();
+                        Toast.makeText(AgregarActivity.this, "Curso registrado correctamente", Toast.LENGTH_LONG).show();
                         nombreCertificado.setText("");
                         entidadEmisora.setText("");
                         horasCertificado.setText("");
@@ -175,7 +160,7 @@ public class AgregarActivity extends AppCompatActivity {
 
                     }else {
                         Toast.makeText(AgregarActivity.this,
-                                "No se puede ir a la otra actividad", Toast.LENGTH_LONG).show();
+                                "No se puede registrar el curso", Toast.LENGTH_LONG).show();
                     }
                 }
             });
@@ -192,8 +177,65 @@ public class AgregarActivity extends AppCompatActivity {
 
                 }
             });
-*/
+
 
 
     }
+    */
+
+    public void AgregarUnTitulo(View view) {
+        strnombreCertificado=nombreCertificado.getText().toString().trim();
+        strentidadEmisora=entidadEmisora.getText().toString().trim();
+        strhorasCertificado= horasCertificado.getText().toString().trim();
+        strcreditosCertificado = creditosCertificado.getText().toString().trim();
+        srtfechaFinCertificado=fechaFinCertificado.getText().toString().trim();
+        final String id = Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
+
+        Certificado c= new Certificado();
+
+                c.setNombreCertificado(strnombreCertificado);
+                c.setEntidadEmisora(strentidadEmisora);
+                c.setHorasCertificado(strhorasCertificado);
+                c.setCreditosCertificado(strcreditosCertificado);
+                c.setFechaFinCertificado(srtfechaFinCertificado);
+                c.setIdUser(id);
+
+        if(!strnombreCertificado.isEmpty() && !strentidadEmisora.isEmpty() && !strhorasCertificado.isEmpty()
+                && !strcreditosCertificado.isEmpty() && !srtfechaFinCertificado.isEmpty() ){
+            final String idCertificado= (UUID.randomUUID().toString());
+            mDatabase.child("certificado").child(idCertificado).setValue(c).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task2) {
+                    if(task2.isSuccessful()){
+                        Map<String, Object> map2= new HashMap<>();
+                        map2.put("idUser", id);
+                        map2.put("idCertificado", idCertificado);
+                        map2.put("anioCorte", strnumberpicker);
+                        String idhistorico= (UUID.randomUUID().toString());
+                        mDatabase.child("historicoCorte").child(idhistorico).setValue(map2);
+                        Toast.makeText(AgregarActivity.this, "Curso registrado correctamente", Toast.LENGTH_LONG).show();
+                        nombreCertificado.setText("");
+                        entidadEmisora.setText("");
+                        horasCertificado.setText("");
+                        creditosCertificado.setText("");
+                        //refrescarFechaEnEditText();
+
+                    }else {
+                        Toast.makeText(AgregarActivity.this,
+                                "No se puede registrar el curso", Toast.LENGTH_LONG).show();
+                    }
+                }
+            });
+
+
+
+        }
+
+
+
+
+
+
+    }
+
 }
