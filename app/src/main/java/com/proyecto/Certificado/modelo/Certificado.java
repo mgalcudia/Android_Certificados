@@ -6,15 +6,7 @@ public class Certificado {
 
     @Override
     public String toString() {
-        return "Certificado{" +
-                "idUser='" + idUser + '\'' +
-                ", El nombre del certificado es ='" + nombreCertificado + '\'' +
-                ", entidadEmisora='" + entidadEmisora + '\'' +
-                ", horasCertificado='" + horasCertificado + '\'' +
-                ", anioCorte='" + anioCorte + '\'' +
-                ", creditosCertificado='" + creditosCertificado + '\'' +
-                ", fechaFinCertificado='" + fechaFinCertificado + '\'' +
-                '}';
+        return "El nombre del certificado es:\n'" + nombreCertificado;
     }
 
     private String nombreCertificado;

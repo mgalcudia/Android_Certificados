@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.google.firebase.FirebaseApp;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -19,13 +20,17 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 public class ListarCertificados extends AppCompatActivity {
     private List <Certificado> listaCertificado = new ArrayList<Certificado>();
     ArrayAdapter<Certificado> arrayAdapterCertificado;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
+    FirebaseAuth mAuth;
     ListView listViewCertificado;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,13 +38,17 @@ public class ListarCertificados extends AppCompatActivity {
         FirebaseApp.initializeApp(this);
          firebaseDatabase = FirebaseDatabase.getInstance();
          databaseReference = firebaseDatabase.getReference();
+        mAuth= FirebaseAuth.getInstance();
          listViewCertificado = findViewById(R.id.listaDatosCertificados);
 
          listarcertificado();
     }
 
     private void listarcertificado() {
-        databaseReference.child("certificado").addValueEventListener(new ValueEventListener() {
+
+        String idUSer= Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
+        databaseReference.child("certificado").orderByChild("idUser").equalTo(idUSer).
+                addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 listaCertificado.clear();
