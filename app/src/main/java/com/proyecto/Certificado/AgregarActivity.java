@@ -198,21 +198,23 @@ public class AgregarActivity extends AppCompatActivity {
                 c.setHorasCertificado(strhorasCertificado);
                 c.setCreditosCertificado(strcreditosCertificado);
                 c.setFechaFinCertificado(srtfechaFinCertificado);
+                c.setAnioCorte(strnumberpicker);
                 c.setIdUser(id);
 
         if(!strnombreCertificado.isEmpty() && !strentidadEmisora.isEmpty() && !strhorasCertificado.isEmpty()
                 && !strcreditosCertificado.isEmpty() && !srtfechaFinCertificado.isEmpty() ){
             final String idCertificado= (UUID.randomUUID().toString());
-            mDatabase.child("certificado").child(idCertificado).setValue(c).addOnCompleteListener(new OnCompleteListener<Void>() {
+            mDatabase.child("certificado/"+id).child(idCertificado).setValue(c).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task2) {
                     if(task2.isSuccessful()){
                         Map<String, Object> map2= new HashMap<>();
                         map2.put("idUser", id);
+                        map2.put("nombreCertificado",strnombreCertificado);
                         map2.put("idCertificado", idCertificado);
                         map2.put("anioCorte", strnumberpicker);
                         String idhistorico= (UUID.randomUUID().toString());
-                        mDatabase.child("historicoCorte").child(idhistorico).setValue(map2);
+                        mDatabase.child("historicoCorte/"+id).child(idhistorico).setValue(map2);
                         Toast.makeText(AgregarActivity.this, "Curso registrado correctamente", Toast.LENGTH_LONG).show();
                         nombreCertificado.setText("");
                         entidadEmisora.setText("");

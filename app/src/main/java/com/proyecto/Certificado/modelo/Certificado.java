@@ -6,7 +6,7 @@ public class Certificado {
 
     @Override
     public String toString() {
-        return "El nombre del certificado es:\n'" + nombreCertificado;
+        return "El nombre del certificado es:\n" + nombreCertificado+"\n presentado en el año: "+ anioCorte;
     }
 
     private String nombreCertificado;

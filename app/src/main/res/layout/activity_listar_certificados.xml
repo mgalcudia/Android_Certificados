@@ -10,6 +10,7 @@
         android:id="@+id/listaDatosCertificados"
         android:layout_width="383dp"
         android:layout_height="375dp"
+        android:background="#608BC34A"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

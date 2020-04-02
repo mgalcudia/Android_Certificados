@@ -47,8 +47,7 @@ public class ListarCertificados extends AppCompatActivity {
     private void listarcertificado() {
 
         String idUSer= Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
-        databaseReference.child("certificado").orderByChild("idUser").equalTo(idUSer).
-                addValueEventListener(new ValueEventListener() {
+        databaseReference.child("certificado/"+idUSer).orderByChild("anioCorte").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 listaCertificado.clear();
