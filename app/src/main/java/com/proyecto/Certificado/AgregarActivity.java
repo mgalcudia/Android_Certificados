@@ -16,7 +16,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.proyecto.Certificado.modelo.Certificado;
+import com.proyecto.Certificado.modelo.Certificados;
 
 import java.util.Calendar;
 import java.util.HashMap;
@@ -119,69 +119,6 @@ public class AgregarActivity extends AppCompatActivity {
         });
 
     }
-/*
-    public void AgregarUnTitulo(View view) {
-        strnombreCertificado=nombreCertificado.getText().toString().trim();
-        strentidadEmisora=entidadEmisora.getText().toString().trim();
-        strhorasCertificado= horasCertificado.getText().toString().trim();
-        strcreditosCertificado = creditosCertificado.getText().toString().trim();
-        srtfechaFinCertificado=fechaFinCertificado.getText().toString().trim();
-        final String id = Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
-
-        //mapa de valores
-        Map<String, Object> map= new HashMap<>();
-        map.put("idUser", id);
-        map.put("nombreCertificado", strnombreCertificado);
-        map.put("entidadEmisora", strentidadEmisora);
-        map.put("horasCertificado", strhorasCertificado);
-        map.put("anioCorte", strnumberpicker);
-        map.put("creditosCertificado", strcreditosCertificado);
-        map.put("fechaFinCertificado", srtfechaFinCertificado);
-
-        if(!strnombreCertificado.isEmpty() && !strentidadEmisora.isEmpty() && !strhorasCertificado.isEmpty()
-                && !strcreditosCertificado.isEmpty() && !srtfechaFinCertificado.isEmpty() ){
-            final String idCertificado= (UUID.randomUUID().toString());
-            mDatabase.child("certificado").child(idCertificado).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
-                @Override
-                public void onComplete(@NonNull Task<Void> task2) {
-                    if(task2.isSuccessful()){
-                        Map<String, Object> map2= new HashMap<>();
-                        map2.put("idUser", id);
-                        map2.put("idCertificado", idCertificado);
-                        map2.put("anioCorte", strnumberpicker);
-                        String idhistorico= (UUID.randomUUID().toString());
-                        mDatabase.child("historicoCorte").child(idhistorico).setValue(map2);
-                        Toast.makeText(AgregarActivity.this, "Curso registrado correctamente", Toast.LENGTH_LONG).show();
-                        nombreCertificado.setText("");
-                        entidadEmisora.setText("");
-                        horasCertificado.setText("");
-                        creditosCertificado.setText("");
-                        refrescarFechaEnEditText();
-
-                    }else {
-                        Toast.makeText(AgregarActivity.this,
-                                "No se puede registrar el curso", Toast.LENGTH_LONG).show();
-                    }
-                }
-            });
-
-
-
-        }
-
-
-/*
-            mDatabase.child("certificado").push(map).addOnCompleteListener(new OnCompleteListener<>() {
-                @Override
-                public void onComplete(@NonNull Task task) {
-
-                }
-            });
-
-
-
-    }
-    */
 
     public void AgregarUnTitulo(View view) {
         strnombreCertificado=nombreCertificado.getText().toString().trim();
@@ -191,7 +128,7 @@ public class AgregarActivity extends AppCompatActivity {
         srtfechaFinCertificado=fechaFinCertificado.getText().toString().trim();
         final String id = Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
 
-        Certificado c= new Certificado();
+        Certificados c= new Certificados();
 
                 c.setNombreCertificado(strnombreCertificado);
                 c.setEntidadEmisora(strentidadEmisora);
@@ -204,6 +141,7 @@ public class AgregarActivity extends AppCompatActivity {
         if(!strnombreCertificado.isEmpty() && !strentidadEmisora.isEmpty() && !strhorasCertificado.isEmpty()
                 && !strcreditosCertificado.isEmpty() && !srtfechaFinCertificado.isEmpty() ){
             final String idCertificado= (UUID.randomUUID().toString());
+            c.setIdCertificado(idCertificado);
             mDatabase.child("certificado/"+id).child(idCertificado).setValue(c).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task2) {

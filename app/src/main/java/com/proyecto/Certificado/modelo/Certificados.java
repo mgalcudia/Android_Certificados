@@ -1,14 +1,25 @@
 package com.proyecto.Certificado.modelo;
 
-public class Certificado {
+import java.io.Serializable;
+
+public class Certificados implements Serializable {
 
     private String idUser;
 
     @Override
     public String toString() {
-        return "El nombre del certificado es:\n" + nombreCertificado+"\n presentado en el año: "+ anioCorte;
+        return  nombreCertificado;
     }
 
+    public String getIdCertificado() {
+        return idCertificado;
+    }
+
+    public void setIdCertificado(String idCertificado) {
+        this.idCertificado = idCertificado;
+    }
+
+    private  String idCertificado;
     private String nombreCertificado;
     private String entidadEmisora;
     private String horasCertificado;
@@ -74,7 +85,7 @@ public class Certificado {
 
 
 
-    public Certificado() {
+    public Certificados() {
     }
 
 

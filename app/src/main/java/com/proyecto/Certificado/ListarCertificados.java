@@ -4,8 +4,11 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
@@ -14,21 +17,22 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.proyecto.Certificado.modelo.Certificado;
+import com.proyecto.Certificado.modelo.Certificados;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 
 public class ListarCertificados extends AppCompatActivity {
-    private List <Certificado> listaCertificado = new ArrayList<Certificado>();
-    ArrayAdapter<Certificado> arrayAdapterCertificado;
+    private List <Certificados> listaCertificados = new ArrayList<Certificados>();
+    ArrayAdapter<Certificados> arrayAdapterCertificado;
+    Certificados certificadosSeleccionado;
+
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
     FirebaseAuth mAuth;
     ListView listViewCertificado;
+
 
 
     @Override
@@ -38,10 +42,22 @@ public class ListarCertificados extends AppCompatActivity {
         FirebaseApp.initializeApp(this);
          firebaseDatabase = FirebaseDatabase.getInstance();
          databaseReference = firebaseDatabase.getReference();
-        mAuth= FirebaseAuth.getInstance();
+          mAuth= FirebaseAuth.getInstance();
          listViewCertificado = findViewById(R.id.listaDatosCertificados);
-
          listarcertificado();
+
+         listViewCertificado.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+             @Override
+             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                  certificadosSeleccionado = (Certificados) parent.getItemAtPosition(position);
+                 Toast.makeText(ListarCertificados.this, "Cursoe"+
+                         certificadosSeleccionado.getIdCertificado() , Toast.LENGTH_LONG).show();
+             }
+         });
+
+
+
     }
 
     private void listarcertificado() {
@@ -50,12 +66,13 @@ public class ListarCertificados extends AppCompatActivity {
         databaseReference.child("certificado/"+idUSer).orderByChild("anioCorte").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                listaCertificado.clear();
+                listaCertificados.clear();
                 for (DataSnapshot objSnaptshot: dataSnapshot.getChildren()){
-                    Certificado c= objSnaptshot.getValue(Certificado.class);
-                    listaCertificado.add(c);
-                    arrayAdapterCertificado = new ArrayAdapter<Certificado>
-                        (ListarCertificados.this,android.R.layout.simple_list_item_activated_1,listaCertificado);
+                    Certificados c= objSnaptshot.getValue(Certificados.class);
+                    listaCertificados.add(c);
+                    Toast.makeText(ListarCertificados.this, "Cursoe"+c , Toast.LENGTH_LONG).show();
+                    arrayAdapterCertificado = new ArrayAdapter<Certificados>
+                        (ListarCertificados.this,android.R.layout.simple_list_item_activated_1, listaCertificados);
                     listViewCertificado.setAdapter(arrayAdapterCertificado);
                 }
             }
