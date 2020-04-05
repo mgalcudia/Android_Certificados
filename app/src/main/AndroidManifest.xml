@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ListarCertificados"></activity>
+        <activity android:name=".MostrarCertificado"></activity>
+        <activity android:name=".ListarCertificados" />
         <activity android:name=".AgregarActivity" />
         <activity android:name=".PruebaActivity" />
         <activity android:name=".InicioActivity" />

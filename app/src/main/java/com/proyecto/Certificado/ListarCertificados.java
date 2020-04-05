@@ -3,6 +3,7 @@ package com.proyecto.Certificado;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -24,6 +25,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class ListarCertificados extends AppCompatActivity {
+
     private List <Certificados> listaCertificados = new ArrayList<Certificados>();
     ArrayAdapter<Certificados> arrayAdapterCertificado;
     Certificados certificadosSeleccionado;
@@ -51,8 +53,17 @@ public class ListarCertificados extends AppCompatActivity {
              public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                   certificadosSeleccionado = (Certificados) parent.getItemAtPosition(position);
+
+                  String idcertificado= certificadosSeleccionado.getIdCertificado();
                  Toast.makeText(ListarCertificados.this, "Cursoe"+
                          certificadosSeleccionado.getIdCertificado() , Toast.LENGTH_LONG).show();
+
+                 Intent intent= new Intent(ListarCertificados.this,MostrarCertificado.class);
+              //   intent.putExtra("idCertificado",idcertificado);
+                 Bundle bundle= new Bundle();
+                 bundle.putSerializable("certificado",certificadosSeleccionado);
+                 intent.putExtras(bundle);
+                 startActivity(intent);
              }
          });
 

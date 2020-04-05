@@ -27,5 +27,6 @@
     <string name="textViewBienvenida">Welcome to the application S.A.S certificates</string>
     <string name="textViewAgregaTitulo">Add your certificate</string>
     <string name="textViewCorteBolsa">bag cut</string>
+    <string name="textViewCertificadoSelec">Selected Certificate</string>
 
 </resources>

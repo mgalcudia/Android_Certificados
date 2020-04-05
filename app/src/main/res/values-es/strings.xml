@@ -31,6 +31,7 @@
     <string name="textViewBienvenida">Bienvenido a la aplicación certificados S.A.S</string>
     <string name="textViewAgregaTitulo">Agrega tu certificado</string>
     <string name="textViewCorteBolsa">Corte de bolsa</string>
+    <string name="textViewCertificadoSelec">Certificado Seleccionado</string>
 
 
 </resources>

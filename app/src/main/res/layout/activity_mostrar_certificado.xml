@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.proyecto.Certificado.MostrarCertificado">
+
+    <TextView
+        android:id="@+id/textViewCertiSelec"
+        android:layout_width="425dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/textViewCertificadoSelec"
+        android:textAlignment="center"
+        android:textSize="36sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextTituloCertificado"
+        android:layout_width="320dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:autofillHints=""
+        android:hint="@string/editTextTituloCertificad"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.351"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewCertiSelec" />
+
+    <EditText
+        android:id="@+id/editTextEntidadCertificado"
+        android:layout_width="318dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="52dp"
+        android:autofillHints=""
+        android:hint="@string/editTextEntidadCertificado"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.351"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTituloCertificado" />
+
+    <EditText
+        android:id="@+id/editTextHorasCertificado"
+        android:layout_width="174dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="36dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/editTextHorasCertificado"
+        android:inputType="number"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextEntidadCertificado" />
+
+    <EditText
+        android:id="@+id/editTextCreditoCertificado"
+        android:layout_width="174dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="36dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/editTextCreditoCertificado"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.483"
+        app:layout_constraintStart_toEndOf="@+id/editTextHorasCertificado"
+        app:layout_constraintTop_toBottomOf="@+id/editTextEntidadCertificado" />
+
+    <EditText
+        android:id="@+id/editTextFechaFin"
+        android:layout_width="170dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="55dp"
+        android:layout_marginEnd="24dp"
+        android:autofillHints=""
+        android:clickable="true"
+        android:ems="10"
+
+        android:focusable="true"
+        android:inputType="none"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextCreditoCertificado" />
+
+    <TextView
+        android:id="@+id/textViewCorteBolsa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/textViewCorteBolsa"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.094"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextHorasCertificado" />
+
+    <NumberPicker
+        android:id="@+id/numberPickerAnoCorte"
+        android:layout_width="170dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="19dp"
+        android:autofillHints=""
+        android:ems="10"
+        app:layout_constraintEnd_toStartOf="@+id/editTextFechaFin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewCorteBolsa" />
+
+    <Button
+        android:id="@+id/btnSubirCertificado"
+        android:layout_width="405dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="80dp"
+        android:text="@string/btnSubirCertificado"
+        android:background="#8FDA03"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.526"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/numberPickerAnoCorte"
+        app:layout_constraintVertical_bias="0.0" />
+</androidx.constraintlayout.widget.ConstraintLayout>
