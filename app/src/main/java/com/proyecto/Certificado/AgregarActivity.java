@@ -40,25 +40,6 @@ public class AgregarActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private DatabaseReference mDatabase;
 
-    //Creacion de listener para el datepicker
-    private DatePickerDialog.OnDateSetListener listenerDatepicker= new DatePickerDialog.OnDateSetListener() {
-        @Override
-        public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-            //Se llama cuando se selecciona la fecha. Nos pasa la vista y asignamos valor a las variables
-            anio= year;
-            mes= month;
-            dia= dayOfMonth;
-            //Refrescamos la fecha
-            asignarFechaEnEditText();
-        }
-    };
-
-
-    public void asignarFechaEnEditText(){
-        String fecha= String.format(Locale.getDefault(),"%02d-%02d-%02d", dia, mes+1, anio);
-        //asigamos el valor del editText
-        fechaFin.setText(fecha);
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,10 +51,11 @@ public class AgregarActivity extends AppCompatActivity {
         horasCertificado = findViewById(R.id.editTextHorasCertificado);
         creditosCertificado =findViewById(R.id.editTextCreditoCertificado);
         fechaFinCertificado= findViewById(R.id.editTextFechaFin);
-
+        numberPicker= findViewById(R.id.numberPickerAnoCorte);
+/*
         //instanciamos el objeto
         fechaFin= findViewById(R.id.editTextFechaFin);
-
+*/
         //Asignamos la fecha de hoy al EditText
         final Calendar calendario= Calendar.getInstance();
         dia= calendario.get(Calendar.DAY_OF_MONTH);
@@ -88,28 +70,46 @@ public class AgregarActivity extends AppCompatActivity {
 
         //Hace que el datepicker se muestre al clickear el edixText
 
-        fechaFin.setOnClickListener(new View.OnClickListener() {
+        fechaFinCertificado.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
 
-                DatePickerDialog dialogoDeFecha = new DatePickerDialog(AgregarActivity.this,listenerDatepicker,anio,mes,dia);
-
+                DatePickerDialog dialogoDeFecha =
+                        new DatePickerDialog(AgregarActivity.this,listenerDatepicker,anio,mes,dia);
                 //Muestra
-
                 dialogoDeFecha.show();
             }
         });
 
     }
 
+    //Creacion de listener para el datepicker
+    private DatePickerDialog.OnDateSetListener listenerDatepicker= new DatePickerDialog.OnDateSetListener() {
+        @Override
+        public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+            //Se llama cuando se selecciona la fecha. Nos pasa la vista y asignamos valor a las variables
+            anio= year;
+            mes= month;
+            dia= dayOfMonth;
+            //Refrescamos la fecha
+            asignarFechaEnEditText();
+        }
+    };
+
+    public void asignarFechaEnEditText(){
+        String fecha= String.format(Locale.getDefault(),"%02d-%02d-%02d", dia, mes+1, anio);
+        //asigamos el valor del editText
+        fechaFinCertificado.setText(fecha);
+    }
+
+
     private void numberpicker() {
 
-        final Calendar calendar= Calendar.getInstance();
-        //anio= calendar.get(Calendar.YEAR);
-        numberPicker= findViewById(R.id.numberPickerAnoCorte);
+        numberPicker.setTextSize(55);
         numberPicker.setMinValue(2000);
         numberPicker.setMaxValue(anio);
+        numberPicker.setValue(anio);
         numberPicker.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
         numberPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
