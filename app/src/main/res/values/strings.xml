@@ -9,6 +9,8 @@
     <string name="btnlistarTitulos">List Certificates</string>
     <string name="btnBuscarCertificados">Search Certificates</string>
     <string name="btnSubirCertificado">Register certificate</string>
+    <string name="btnBorrarCertificado">Delete certificate</string>
+    <string name="btnModificarCertificado">Modify certificate</string>
 
 
     //Edit text
@@ -28,5 +30,8 @@
     <string name="textViewAgregaTitulo">Add your certificate</string>
     <string name="textViewCorteBolsa">bag cut</string>
     <string name="textViewCertificadoSelec">Selected Certificate</string>
+
+    //item
+    <string name="itemBuscador">Search </string>
 
 </resources>

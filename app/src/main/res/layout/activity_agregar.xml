@@ -121,7 +121,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textViewCorteBolsa" />
 
         <Button
-            android:id="@+id/btnSubirCertificado"
+            android:id="@+id/btnBorrarCertificado"
             android:layout_width="405dp"
             android:layout_height="54dp"
             android:layout_marginTop="80dp"

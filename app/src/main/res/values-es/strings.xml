@@ -11,6 +11,8 @@
     <string name="btnlistarTitulos">Listar Certificados</string>
     <string name="btnBuscarCertificados">Buscar Certificados</string>
     <string name="btnSubirCertificado">Registrar certificado</string>
+    <string name="btnBorrarCertificado">Borrar Certificado</string>
+    <string name="btnModificarCertificado">Modificar certificado</string>
 
 
 
@@ -32,6 +34,9 @@
     <string name="textViewAgregaTitulo">Agrega tu certificado</string>
     <string name="textViewCorteBolsa">Corte de bolsa</string>
     <string name="textViewCertificadoSelec">Certificado Seleccionado</string>
+
+    //item
+    <string name="itemBuscador">Buscar </string>
 
 
 </resources>

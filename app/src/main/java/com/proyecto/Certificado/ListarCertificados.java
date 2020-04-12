@@ -59,7 +59,6 @@ public class ListarCertificados extends AppCompatActivity {
                          certificadosSeleccionado.getIdCertificado() , Toast.LENGTH_LONG).show();
 
                  Intent intent= new Intent(ListarCertificados.this,MostrarCertificado.class);
-              //   intent.putExtra("idCertificado",idcertificado);
                  Bundle bundle= new Bundle();
                  bundle.putSerializable("certificado",certificadosSeleccionado);
                  intent.putExtras(bundle);

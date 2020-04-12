@@ -36,7 +36,7 @@ public class InicioActivity extends AppCompatActivity {
     }
 
     public void buscarCertificados(View view) {
-      //  startActivity(new Intent(InicioActivity.this, AgregarActivity.class));
+        startActivity(new Intent(InicioActivity.this, BuscarCertificado.class));
     }
 
     public void cerrarSesion(View view) {

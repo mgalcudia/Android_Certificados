@@ -126,7 +126,7 @@ public class AgregarActivity extends AppCompatActivity {
         strhorasCertificado= horasCertificado.getText().toString().trim();
         strcreditosCertificado = creditosCertificado.getText().toString().trim();
         srtfechaFinCertificado=fechaFinCertificado.getText().toString().trim();
-        final String id = Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
+        final String idUsuario = Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
 
         Certificados c= new Certificados();
 
@@ -136,23 +136,23 @@ public class AgregarActivity extends AppCompatActivity {
                 c.setCreditosCertificado(strcreditosCertificado);
                 c.setFechaFinCertificado(srtfechaFinCertificado);
                 c.setAnioCorte(strnumberpicker);
-                c.setIdUser(id);
+                c.setIdUser(idUsuario);
 
         if(!strnombreCertificado.isEmpty() && !strentidadEmisora.isEmpty() && !strhorasCertificado.isEmpty()
                 && !strcreditosCertificado.isEmpty() && !srtfechaFinCertificado.isEmpty() ){
             final String idCertificado= (UUID.randomUUID().toString());
             c.setIdCertificado(idCertificado);
-            mDatabase.child("certificado/"+id).child(idCertificado).setValue(c).addOnCompleteListener(new OnCompleteListener<Void>() {
+            mDatabase.child("certificado/"+idUsuario).child(idCertificado).setValue(c).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task2) {
                     if(task2.isSuccessful()){
                         Map<String, Object> map2= new HashMap<>();
-                        map2.put("idUser", id);
+                        map2.put("idUser", idUsuario);
                         map2.put("nombreCertificado",strnombreCertificado);
                         map2.put("idCertificado", idCertificado);
                         map2.put("anioCorte", strnumberpicker);
-                        String idhistorico= (UUID.randomUUID().toString());
-                        mDatabase.child("historicoCorte/"+id).child(idhistorico).setValue(map2);
+                        //String idhistorico= (UUID.randomUUID().toString());
+                        mDatabase.child("historicoCorte/"+idUsuario).child(idCertificado).setValue(map2);
                         Toast.makeText(AgregarActivity.this, "Curso registrado correctamente", Toast.LENGTH_LONG).show();
                         nombreCertificado.setText("");
                         entidadEmisora.setText("");
