@@ -39,6 +39,10 @@ public class InicioActivity extends AppCompatActivity {
         startActivity(new Intent(InicioActivity.this, BuscarCertificado.class));
     }
 
+    public void irHistorico(View view) {
+        startActivity(new Intent(InicioActivity.this, HistoricoCertificado.class));
+    }
+
     public void cerrarSesion(View view) {
         Toast.makeText(InicioActivity.this,
                 "Cerramos Sesion", Toast.LENGTH_LONG).show();
@@ -47,4 +51,6 @@ public class InicioActivity extends AppCompatActivity {
         finish();
 
     }
+
+
 }

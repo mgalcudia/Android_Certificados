@@ -11,6 +11,8 @@
     <string name="btnSubirCertificado">Register certificate</string>
     <string name="btnBorrarCertificado">Delete certificate</string>
     <string name="btnModificarCertificado">Modify certificate</string>
+    <string name="btnirHistorico">historical certificates</string>
+    <string name="btncerrarSesion">Sign off</string>
 
 
     //Edit text

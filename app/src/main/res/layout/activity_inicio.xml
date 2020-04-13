@@ -9,25 +9,24 @@
 
     <TextView
         android:id="@+id/textViewBienvenida"
-        android:layout_width="324dp"
-        android:layout_height="141dp"
+        android:layout_width="403dp"
+        android:layout_height="154dp"
         android:layout_marginTop="50dp"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="8dp"
         android:text="@string/textViewBienvenida"
         android:textAlignment="center"
         android:textSize="36sp"
         app:layout_constraintBottom_toTopOf="@+id/btnAgregarTitulo"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.851" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/btnAgregarTitulo"
 
-        android:layout_width="405dp"
-        android:layout_height="54dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
 
         android:layout_marginBottom="40dp"
         android:background="#8FDA03"
@@ -40,8 +39,8 @@
 
     <Button
         android:id="@+id/btnlistarTitulos"
-        android:layout_width="405dp"
-        android:layout_height="54dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="40dp"
         android:background="#8FDA03"
         android:onClick="listarTitulos"
@@ -53,25 +52,40 @@
 
     <Button
         android:id="@+id/btnBuscarCertificados"
-        android:layout_width="405dp"
-        android:layout_height="54dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="40dp"
         android:background="#8FDA03"
         android:onClick="buscarCertificados"
         android:text="@string/btnBuscarCertificados"
         android:textColor="@android:color/widget_edittext_dark"
+        app:layout_constraintBottom_toTopOf="@+id/btnHistorico"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnHistorico"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        android:background="#8FDA03"
+        android:onClick="irHistorico"
+        android:text="@string/btnirHistorico"
+        android:textColor="@android:color/widget_edittext_dark"
         app:layout_constraintBottom_toTopOf="@+id/btnCerrarSesion"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btnCerrarSesion"
-        android:layout_width="405dp"
-        android:layout_height="54dp"
-        android:layout_marginBottom="56dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
         android:background="#8FDA03"
         android:onClick="cerrarSesion"
-        android:text="Cerrar Sesion"
+        android:text="@string/btncerrarSesion"
         android:textColor="@android:color/widget_edittext_dark"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

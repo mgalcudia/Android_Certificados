@@ -3,18 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    tools:context="com.proyecto.Certificado.BuscarCertificado">
+    android:layout_height="match_parent"
+    tools:context="com.proyecto.Certificado.HistoricoCertificado">
 
-    <ListView
-        android:id="@+id/listviewBuscarCertificado"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#608BC34A"
+    <NumberPicker
+        android:id="@+id/numberPickerAnoCorte"
+        android:layout_width="167dp"
+        android:layout_height="86dp"
+        android:autofillHints=""
+        android:ems="10"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.29"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.845" />
+        app:layout_constraintVertical_bias="0.13" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

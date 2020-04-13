@@ -13,6 +13,8 @@
     <string name="btnSubirCertificado">Registrar certificado</string>
     <string name="btnBorrarCertificado">Borrar Certificado</string>
     <string name="btnModificarCertificado">Modificar certificado</string>
+    <string name="btnirHistorico">historico certificados</string>
+    <string name="btncerrarSesion">Cerrar Sesion</string>
 
 
 
