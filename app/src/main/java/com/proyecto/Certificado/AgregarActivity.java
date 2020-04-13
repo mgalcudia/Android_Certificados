@@ -115,6 +115,7 @@ public class AgregarActivity extends AppCompatActivity {
             @Override
             public void onValueChange(NumberPicker numberPicker, int i, int i1) {
                 strnumberpicker =String.valueOf(numberPicker.getValue());
+
             }
         });
 
@@ -135,11 +136,16 @@ public class AgregarActivity extends AppCompatActivity {
                 c.setHorasCertificado(strhorasCertificado);
                 c.setCreditosCertificado(strcreditosCertificado);
                 c.setFechaFinCertificado(srtfechaFinCertificado);
+
+        if(strnumberpicker== null){
+            strnumberpicker= "2020";
+        }
+        Toast.makeText(AgregarActivity.this, "numberpicker"+strnumberpicker, Toast.LENGTH_SHORT).show();
                 c.setAnioCorte(strnumberpicker);
                 c.setIdUser(idUsuario);
 
         if(!strnombreCertificado.isEmpty() && !strentidadEmisora.isEmpty() && !strhorasCertificado.isEmpty()
-                && !strcreditosCertificado.isEmpty() && !srtfechaFinCertificado.isEmpty() ){
+                && !strcreditosCertificado.isEmpty() && !srtfechaFinCertificado.isEmpty()){
             final String idCertificado= (UUID.randomUUID().toString());
             c.setIdCertificado(idCertificado);
             mDatabase.child("certificado/"+idUsuario).child(idCertificado).setValue(c).addOnCompleteListener(new OnCompleteListener<Void>() {

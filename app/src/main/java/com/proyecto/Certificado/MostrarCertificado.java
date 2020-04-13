@@ -90,13 +90,20 @@ public class MostrarCertificado extends AppCompatActivity {
         Certificados certificado = null;
         if (objetoEnviado != null) {
             certificado = (Certificados) objetoEnviado.getSerializable("certificado");
+            Toast.makeText(this, "certificado"+certificado.getNombreCertificado(), Toast.LENGTH_SHORT).show();
+
             assert certificado != null;
             nombreCertificado.setText(certificado.getNombreCertificado());
+
             entidadEmisora.setText(certificado.getEntidadEmisora());
+
             horasCertificado.setText(certificado.getHorasCertificado());
+
             creditosCertificado.setText(certificado.getCreditosCertificado());
             fechaFinCertificado.setText(certificado.getFechaFinCertificado());
+
             anioCorte = Integer.parseInt(certificado.getAnioCorte());
+
             stridCertificado = certificado.getIdCertificado();
             strIdUser = certificado.getIdUser();
 
@@ -176,13 +183,6 @@ public class MostrarCertificado extends AppCompatActivity {
         c.setIdCertificado(stridCertificado);
         c.setIdUser(strIdUser);
         c.setNombreCertificado(strnombreCertificado);
-
-
-
-
-
-
-        // id curso : stridCertificado id Usuario: strIdUser
 
         if (!strnombreCertificado.isEmpty() && !strentidadEmisora.isEmpty() && !strhorasCertificado.isEmpty()
                 && !strcreditosCertificado.isEmpty() && !srtfechaFinCertificado.isEmpty()) {

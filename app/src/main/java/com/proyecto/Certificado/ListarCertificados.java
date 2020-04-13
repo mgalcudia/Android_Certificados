@@ -41,10 +41,12 @@ public class ListarCertificados extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listar_certificados);
+
         FirebaseApp.initializeApp(this);
          firebaseDatabase = FirebaseDatabase.getInstance();
          databaseReference = firebaseDatabase.getReference();
           mAuth= FirebaseAuth.getInstance();
+
          listViewCertificado = findViewById(R.id.listaDatosCertificados);
          listarcertificado();
 
