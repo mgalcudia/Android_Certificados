@@ -81,14 +81,10 @@ public class HistoricoCertificado extends AppCompatActivity {
 
                         anios.add(c);
                     }
-
-
                 }
                 arrayAdapterCertificado = new ArrayAdapter<>
                 (HistoricoCertificado.this,android.R.layout.simple_list_item_activated_1, anios);
                 listViewCertificado.setAdapter(arrayAdapterCertificado);
-
-
             }
 
             @Override
@@ -101,19 +97,5 @@ public class HistoricoCertificado extends AppCompatActivity {
 
     }
 
-    private void numberpicker(String[] contador) {
-
-        numberPicker.setTextSize(55);
-        numberPicker.setDisplayedValues(contador);
-        numberPicker.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
-        numberPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
-            @Override
-            public void onValueChange(NumberPicker numberPicker, int i, int i1) {
-                strnumberpicker =String.valueOf(numberPicker.getValue());
-
-            }
-        });
-
-    }
 
 }

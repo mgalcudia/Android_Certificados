@@ -26,7 +26,7 @@ import java.util.Objects;
 
 public class ListarCertificados extends AppCompatActivity {
 
-    private List <Certificados> listaCertificados = new ArrayList<Certificados>();
+    private List <Certificados> listaCertificados = new ArrayList<>();
     ArrayAdapter<Certificados> arrayAdapterCertificado;
     Certificados certificadosSeleccionado;
 
@@ -56,10 +56,6 @@ public class ListarCertificados extends AppCompatActivity {
 
                   certificadosSeleccionado = (Certificados) parent.getItemAtPosition(position);
 
-                  String idcertificado= certificadosSeleccionado.getIdCertificado();
-                 Toast.makeText(ListarCertificados.this, "Cursoe"+
-                         certificadosSeleccionado.getIdCertificado() , Toast.LENGTH_LONG).show();
-
                  Intent intent= new Intent(ListarCertificados.this,MostrarCertificado.class);
                  Bundle bundle= new Bundle();
                  bundle.putSerializable("certificado",certificadosSeleccionado);
@@ -82,9 +78,8 @@ public class ListarCertificados extends AppCompatActivity {
                 for (DataSnapshot objSnaptshot: dataSnapshot.getChildren()){
                     Certificados c= objSnaptshot.getValue(Certificados.class);
                     listaCertificados.add(c);
-                    Toast.makeText(ListarCertificados.this, "Cursoe"+c , Toast.LENGTH_LONG).show();
-                    arrayAdapterCertificado = new ArrayAdapter<Certificados>
-                        (ListarCertificados.this,android.R.layout.simple_list_item_activated_1, listaCertificados);
+                    arrayAdapterCertificado = new ArrayAdapter<>
+                            (ListarCertificados.this, android.R.layout.simple_list_item_activated_1, listaCertificados);
                     listViewCertificado.setAdapter(arrayAdapterCertificado);
                 }
             }

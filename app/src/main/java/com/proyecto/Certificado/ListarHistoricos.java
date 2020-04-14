@@ -28,7 +28,7 @@ import java.util.Objects;
 public class ListarHistoricos extends AppCompatActivity {
 
 
-    private List<Certificados> listaCertificados = new ArrayList<Certificados>();
+    private List<Certificados> listaCertificados = new ArrayList<>();
     ArrayAdapter<Certificados> arrayAdapterCertificado;
     Certificados certificadosSeleccionado;
 
@@ -61,10 +61,6 @@ public class ListarHistoricos extends AppCompatActivity {
 
                 certificadosSeleccionado = (Certificados) parent.getItemAtPosition(position);
 
-                String idcertificado= certificadosSeleccionado.getIdCertificado();
-                Toast.makeText(ListarHistoricos.this, "Cursoe"+
-                        certificadosSeleccionado.getIdCertificado() , Toast.LENGTH_LONG).show();
-
                 Intent intent= new Intent(ListarHistoricos.this,MostrarCertificado.class);
                 Bundle bundle= new Bundle();
                 bundle.putSerializable("certificado",certificadosSeleccionado);
@@ -78,8 +74,6 @@ public class ListarHistoricos extends AppCompatActivity {
 
     private void listarcertificado(String anioCorteRecibido) {
 
-
-        Toast.makeText(this, "anio "+anioCorteRecibido, Toast.LENGTH_SHORT).show();
         String idUSer= Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
         databaseReference.child("certificado/"+idUSer).orderByChild("anioCorte").equalTo(anioCorteRecibido).addValueEventListener(new ValueEventListener() {
             @Override
@@ -88,8 +82,7 @@ public class ListarHistoricos extends AppCompatActivity {
                 for (DataSnapshot objSnaptshot: dataSnapshot.getChildren()){
                     Certificados c= objSnaptshot.getValue(Certificados.class);
                     listaCertificados.add(c);
-                    Toast.makeText(ListarHistoricos.this, "Cursoe"+c , Toast.LENGTH_LONG).show();
-                    arrayAdapterCertificado = new ArrayAdapter<Certificados>
+                    arrayAdapterCertificado = new ArrayAdapter<>
                             (ListarHistoricos.this, android.R.layout.simple_list_item_activated_1, listaCertificados);
                     listViewCertificado.setAdapter(arrayAdapterCertificado);
                 }

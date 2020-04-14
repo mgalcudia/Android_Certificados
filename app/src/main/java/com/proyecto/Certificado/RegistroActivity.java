@@ -29,7 +29,7 @@ public class RegistroActivity extends AppCompatActivity {
     private EditText mEditTextName;
     private EditText mEditTextEmail;
     private EditText mEditTextPassword;
-    private Button mButtonRegistrar;
+
     ///Variables que vamos a registrar
     private String name="";
     private String email="";
@@ -50,7 +50,7 @@ public class RegistroActivity extends AppCompatActivity {
         mEditTextName =findViewById(R.id.editTexname);
         mEditTextEmail =findViewById(R.id.editTexEmail);
         mEditTextPassword=findViewById(R.id.editPassword);
-        mButtonRegistrar= findViewById(R.id.btnRegister);
+
 
     }
 
@@ -62,7 +62,7 @@ public class RegistroActivity extends AppCompatActivity {
         if(!name.isEmpty()&& !email.isEmpty()&& !password.isEmpty()){
 
             if (password.length()>=6){
-                Toast.makeText(RegistroActivity.this, "La logitud del password"+password.length(), Toast.LENGTH_LONG).show();
+
                 //Si completo ok registramos al usuario
                 RegisterUSer();
 
@@ -78,44 +78,7 @@ public class RegistroActivity extends AppCompatActivity {
 
     }
 
-/*
-    private void RegisterUSer() {
-        mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
 
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful()){
-                    //mapa de valores
-                    Map<String, Object> map= new HashMap<>();
-                    map.put("name", name);
-                    map.put("email", email);
-                    map.put("password", password);
-
-                    String idUSer= Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
-                    mDatabase.child("user").child(idUSer).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task2) {
-                            if(task2.isSuccessful()){
-                                Toast.makeText(RegistroActivity.this, "Usuario Registado", Toast.LENGTH_LONG).show();
-                                startActivity(new Intent(RegistroActivity.this, InicioActivity.class));
-                              finish();
-
-                            }else {
-                                Toast.makeText(RegistroActivity.this,
-                                "No se puede ir a la otra actividad", Toast.LENGTH_LONG).show();
-                            }
-
-                        }
-                    });
-
-                }else{
-                    Toast.makeText(RegistroActivity.this, "No se ha podido registra", Toast.LENGTH_LONG).show();
-                }
-            }
-        });
-
-    }
-    */
 
     private void RegisterUSer() {
         mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -129,8 +92,6 @@ public class RegistroActivity extends AppCompatActivity {
                     p.setEmail(email);
                     p.setName(name);
                     p.setPassword(password);
-
-
                     mDatabaseReference.child("user").child(idUSer).setValue(p).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task2) {

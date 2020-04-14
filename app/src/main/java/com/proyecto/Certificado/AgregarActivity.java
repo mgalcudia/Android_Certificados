@@ -128,19 +128,15 @@ public class AgregarActivity extends AppCompatActivity {
         strcreditosCertificado = creditosCertificado.getText().toString().trim();
         srtfechaFinCertificado=fechaFinCertificado.getText().toString().trim();
         final String idUsuario = Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
-
+        if(strnumberpicker== null){
+            strnumberpicker= "2020";
+        }
         Certificados c= new Certificados();
-
                 c.setNombreCertificado(strnombreCertificado);
                 c.setEntidadEmisora(strentidadEmisora);
                 c.setHorasCertificado(strhorasCertificado);
                 c.setCreditosCertificado(strcreditosCertificado);
                 c.setFechaFinCertificado(srtfechaFinCertificado);
-
-        if(strnumberpicker== null){
-            strnumberpicker= "2020";
-        }
-        Toast.makeText(AgregarActivity.this, "numberpicker"+strnumberpicker, Toast.LENGTH_SHORT).show();
                 c.setAnioCorte(strnumberpicker);
                 c.setIdUser(idUsuario);
 
@@ -157,14 +153,12 @@ public class AgregarActivity extends AppCompatActivity {
                         map2.put("nombreCertificado",strnombreCertificado);
                         map2.put("idCertificado", idCertificado);
                         map2.put("anioCorte", strnumberpicker);
-                        //String idhistorico= (UUID.randomUUID().toString());
                         mDatabase.child("historicoCorte/"+idUsuario).child(idCertificado).setValue(map2);
                         Toast.makeText(AgregarActivity.this, "Curso registrado correctamente", Toast.LENGTH_LONG).show();
                         nombreCertificado.setText("");
                         entidadEmisora.setText("");
                         horasCertificado.setText("");
                         creditosCertificado.setText("");
-                        //refrescarFechaEnEditText();
 
                     }else {
                         Toast.makeText(AgregarActivity.this,

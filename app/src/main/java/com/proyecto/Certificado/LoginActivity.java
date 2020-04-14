@@ -19,7 +19,6 @@ public class LoginActivity extends AppCompatActivity {
 
     private EditText mEditTextEmail;
     private EditText mEditTextPassword;
-    private Button btnLoguin;
     private String password="";
     private String email="";
     //creamos el objeto firebase
@@ -32,7 +31,6 @@ public class LoginActivity extends AppCompatActivity {
         mAuth= FirebaseAuth.getInstance();
         mEditTextEmail =findViewById(R.id.editTexEmail);
         mEditTextPassword=findViewById(R.id.editPassword);
-        btnLoguin=findViewById(R.id.btnLoguear);
     }
 
 
@@ -52,8 +50,8 @@ public class LoginActivity extends AppCompatActivity {
     private void loginUser() {
         mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()){
+            public void onComplete(@NonNull Task<AuthResult> task2) {
+                if (task2.isSuccessful()){
 
                     startActivity(new Intent(LoginActivity.this,InicioActivity.class));
 

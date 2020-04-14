@@ -45,7 +45,7 @@ public class InicioActivity extends AppCompatActivity {
 
     public void cerrarSesion(View view) {
         Toast.makeText(InicioActivity.this,
-                "Cerramos Sesion", Toast.LENGTH_LONG).show();
+                "Sesion Cerrada", Toast.LENGTH_LONG).show();
         mAuth.signOut();
         startActivity(new Intent(InicioActivity.this,MainActivity.class));
         finish();

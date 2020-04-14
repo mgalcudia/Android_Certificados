@@ -27,7 +27,7 @@ import java.util.UUID;
 
 public class MostrarCertificado extends AppCompatActivity {
     //Iniciamos variable fechafinal
-    private EditText fechaFin;
+    // EditText fechaFin;
     private int dia, mes, anio;
     //variables numberPicker
     private NumberPicker numberPicker;
@@ -173,7 +173,9 @@ public class MostrarCertificado extends AppCompatActivity {
         strhorasCertificado = horasCertificado.getText().toString().trim();
         strcreditosCertificado = creditosCertificado.getText().toString().trim();
         srtfechaFinCertificado = fechaFinCertificado.getText().toString().trim();
-
+        if(strnumberpicker== null){
+            strnumberpicker= "2020";
+        }
         Certificados c = new Certificados();
         c.setAnioCorte(strnumberpicker);
         c.setCreditosCertificado(strcreditosCertificado);
@@ -196,7 +198,7 @@ public class MostrarCertificado extends AppCompatActivity {
                         map2.put("nombreCertificado", strnombreCertificado);
                         map2.put("idCertificado", strIdUser);
                         map2.put("anioCorte", strnumberpicker);
-                        //String idhistorico = (UUID.randomUUID().toString());
+
                         mDatabase.child("historicoCorte/" + strIdUser).child(stridCertificado).setValue(map2);
                         Toast.makeText(MostrarCertificado.this, "Curso modificado correctamente", Toast.LENGTH_LONG).show();
 
