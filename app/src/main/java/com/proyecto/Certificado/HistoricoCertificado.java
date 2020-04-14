@@ -3,7 +3,12 @@ package com.proyecto.Certificado;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.NumberPicker;
 import android.widget.Toast;
 
@@ -14,6 +19,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.proyecto.Certificado.modelo.Certificados;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -24,9 +30,11 @@ public class HistoricoCertificado extends AppCompatActivity {
     DatabaseReference databaseReference;
     FirebaseAuth mAuth;
     final ArrayList<String> anios = new ArrayList<>();
-     String[] contador;
+
     private NumberPicker numberPicker;
-    String strnumberpicker;
+    String strnumberpicker, stranioselecionado;
+    ListView listViewCertificado;
+    ArrayAdapter<String> arrayAdapterCertificado;
 
 
 
@@ -39,7 +47,23 @@ public class HistoricoCertificado extends AppCompatActivity {
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference();
         mAuth= FirebaseAuth.getInstance();
+        listViewCertificado = findViewById(R.id.listaDatosCertificados);
         obtenerAniosCorte();
+
+        listViewCertificado.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                stranioselecionado = (String) parent.getItemAtPosition(position);
+                Intent intent= new Intent(HistoricoCertificado.this,ListarHistoricos.class);
+                Bundle bundle= new Bundle();
+                bundle.putSerializable("anio",stranioselecionado);
+                intent.putExtras(bundle);
+                startActivity(intent);
+
+
+            }
+        });
 
     }
 
@@ -52,19 +76,19 @@ public class HistoricoCertificado extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot objSnaptshot : dataSnapshot.getChildren()) {
                     String  c = objSnaptshot.child("anioCorte").getValue(String.class);
-                    anios.add(c);
+
+                    if(!anios.contains(c)){
+
+                        anios.add(c);
+                    }
+
 
                 }
-                contador = new String[anios.size()];
-                contador= anios.toArray(contador);
-                int i = 0;
-                for (String s : anios){
-                    contador[i]=s;
-                    i++;
-                    Toast.makeText(HistoricoCertificado.this, "Contador es"+s, Toast.LENGTH_SHORT).show();
-                }
-                Toast.makeText(HistoricoCertificado.this, "Contador es"+contador[0], Toast.LENGTH_SHORT).show();
-                numberpicker(contador);
+                arrayAdapterCertificado = new ArrayAdapter<>
+                (HistoricoCertificado.this,android.R.layout.simple_list_item_activated_1, anios);
+                listViewCertificado.setAdapter(arrayAdapterCertificado);
+
+
             }
 
             @Override
