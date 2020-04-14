@@ -32,6 +32,7 @@
     <string name="textViewAgregaTitulo">Add your certificate</string>
     <string name="textViewCorteBolsa">bag cut</string>
     <string name="textViewCertificadoSelec">Selected Certificate</string>
+    <string name="textViewListarTodo">Aggregated Certificate Listings</string>
 
     //item
     <string name="itemBuscador">Search </string>

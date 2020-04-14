@@ -8,7 +8,9 @@ public class Certificados implements Serializable {
 
     @Override
     public String toString() {
-        return  nombreCertificado;
+        return  "\nTitulo Certificado: "+nombreCertificado+"\nEntidad emisora: "+entidadEmisora+
+                "\nHoras Certificado: "+horasCertificado+"\nCreditos certificado "+creditosCertificado+
+                "\nAño presentacion: "+anioCorte+"\n";
     }
 
     public String getIdCertificado() {

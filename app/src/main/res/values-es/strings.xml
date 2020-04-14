@@ -36,6 +36,7 @@
     <string name="textViewAgregaTitulo">Agrega tu certificado</string>
     <string name="textViewCorteBolsa">Corte de bolsa</string>
     <string name="textViewCertificadoSelec">Certificado Seleccionado</string>
+    <string name="textViewListarTodo">Listados de certificados agregados</string>
 
     //item
     <string name="itemBuscador">Buscar </string>

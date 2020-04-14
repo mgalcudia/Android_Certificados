@@ -6,15 +6,32 @@
     android:layout_height="match_parent"
     tools:context="com.proyecto.Certificado.ListarCertificados">
 
+
+    <TextView
+        android:id="@+id/textViewListarTodo"
+        android:layout_width="381dp"
+        android:layout_height="129dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/textViewListarTodo"
+        android:textAlignment="center"
+        android:textSize="36sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ListView
         android:id="@+id/listaDatosCertificados"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#608BC34A"
+        android:layout_marginTop="120dp"
 
+        android:background="#608BC34A"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.845" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewListarTodo" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
