@@ -37,9 +37,14 @@
     <string name="textViewCorteBolsa">Corte de bolsa</string>
     <string name="textViewCertificadoSelec">Certificado Seleccionado</string>
     <string name="textViewListarTodo">Listados de certificados agregados</string>
+    <string name="textViewLMostrarHistorico">Historico años presentado</string>
+    <string name="textViewLlistarHistorico">Certificados presentados en el año: %1$s</string>
+
+
 
     //item
     <string name="itemBuscador">Buscar </string>
+
 
 
 </resources>

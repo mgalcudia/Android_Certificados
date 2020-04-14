@@ -33,8 +33,11 @@
     <string name="textViewCorteBolsa">bag cut</string>
     <string name="textViewCertificadoSelec">Selected Certificate</string>
     <string name="textViewListarTodo">Aggregated Certificate Listings</string>
+    <string name="textViewLMostrarHistorico">Historical years presented</string>
+    <string name="textViewLlistarHistorico">Certificates presented in the year: %1$s</string>
 
     //item
     <string name="itemBuscador">Search </string>
+
 
 </resources>

@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.FirebaseApp;
@@ -35,7 +36,8 @@ public class ListarHistoricos extends AppCompatActivity {
     DatabaseReference databaseReference;
     FirebaseAuth mAuth;
     ListView listViewCertificado;
-
+    TextView mensaje;
+    String anioCorteRecibido;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,8 +50,13 @@ public class ListarHistoricos extends AppCompatActivity {
         databaseReference = firebaseDatabase.getReference();
         mAuth= FirebaseAuth.getInstance();
 
+        anioCorteRecibido = Objects.requireNonNull(getIntent().getExtras()).getString("anio");
         listViewCertificado = findViewById(R.id.listaDatosCertificados);
-        listarcertificado();
+
+        mensaje= findViewById(R.id.textViewListarhistorico);
+
+        mensaje.setText(getString(R.string.textViewLlistarHistorico,anioCorteRecibido));
+        listarcertificado(anioCorteRecibido);
 
         listViewCertificado.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -72,11 +79,12 @@ public class ListarHistoricos extends AppCompatActivity {
 
     }
 
-    private void listarcertificado() {
-        String AnioCorteRecibido = Objects.requireNonNull(getIntent().getExtras()).getString("anio");
-        Toast.makeText(this, "anio "+AnioCorteRecibido, Toast.LENGTH_SHORT).show();
+    private void listarcertificado(String anioCorteRecibido) {
+
+
+        Toast.makeText(this, "anio "+anioCorteRecibido, Toast.LENGTH_SHORT).show();
         String idUSer= Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
-        databaseReference.child("certificado/"+idUSer).orderByChild("anioCorte").equalTo(AnioCorteRecibido).addValueEventListener(new ValueEventListener() {
+        databaseReference.child("certificado/"+idUSer).orderByChild("anioCorte").equalTo(anioCorteRecibido).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 listaCertificados.clear();
@@ -85,7 +93,7 @@ public class ListarHistoricos extends AppCompatActivity {
                     listaCertificados.add(c);
                     Toast.makeText(ListarHistoricos.this, "Cursoe"+c , Toast.LENGTH_LONG).show();
                     arrayAdapterCertificado = new ArrayAdapter<Certificados>
-                            (ListarHistoricos.this,android.R.layout.simple_list_item_activated_1, listaCertificados);
+                            (ListarHistoricos.this, android.R.layout.simple_list_item_activated_1, listaCertificados);
                     listViewCertificado.setAdapter(arrayAdapterCertificado);
                 }
             }
