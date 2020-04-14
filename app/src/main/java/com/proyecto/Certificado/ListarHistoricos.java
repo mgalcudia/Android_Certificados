@@ -43,13 +43,10 @@ public class ListarHistoricos extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listar_historicos);
-
-
         FirebaseApp.initializeApp(this);
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference();
         mAuth= FirebaseAuth.getInstance();
-
         anioCorteRecibido = Objects.requireNonNull(getIntent().getExtras()).getString("anio");
         listViewCertificado = findViewById(R.id.listaDatosCertificados);
 

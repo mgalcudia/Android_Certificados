@@ -22,8 +22,8 @@
 
     <Button
         android:id="@+id/btnirRegistro"
-        android:layout_width="405dp"
-        android:layout_height="54dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:background="@color/colorAccent"
         android:onClick="irRegistrar"
@@ -35,8 +35,8 @@
 
     <Button
         android:id="@+id/btnirLoguin"
-        android:layout_width="405dp"
-        android:layout_height="54dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="140dp"
         android:background="#8FDA03"
         android:onClick="irLoguin"

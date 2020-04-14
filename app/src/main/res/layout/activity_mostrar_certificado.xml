@@ -116,8 +116,8 @@
 
     <Button
         android:id="@+id/btnBorrarCertificado"
-        android:layout_width="450dp"
-        android:layout_height="58dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:background="#F32718"
         android:onClick="borrarCertificado"
@@ -131,8 +131,8 @@
 
     <Button
         android:id="@+id/btnModificarCertificado"
-        android:layout_width="450dp"
-        android:layout_height="58dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
         android:text="@string/btnModificarCertificado"
         android:onClick="modificarCertificado"

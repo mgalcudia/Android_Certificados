@@ -18,7 +18,6 @@
         <activity android:name=".MostrarCertificado" />
         <activity android:name=".ListarCertificados" />
         <activity android:name=".AgregarActivity" />
-        <activity android:name=".PruebaActivity" />
         <activity android:name=".InicioActivity" />
         <activity android:name=".RegistroActivity" />
         <activity android:name=".LoginActivity" />
