@@ -10,9 +10,11 @@
         android:id="@+id/editTexEmail"
         android:layout_width="320dp"
         android:layout_height="50dp"
-        android:layout_marginTop="212dp"
+        android:layout_marginTop="88dp"
         android:hint="@string/editextEmail"
+        android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -22,6 +24,7 @@
         android:layout_height="50dp"
         android:layout_marginTop="32dp"
         android:hint="@string/editextPassword"
+        android:inputType="textPassword"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.505"
@@ -35,14 +38,14 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="48dp"
         android:background="#8FDA03"
+        android:onClick="Loguearse"
         android:text="@string/btniniciarSesion"
         android:textColor="@android:color/widget_edittext_dark"
-        android:onClick="Loguearse"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editPassword"
-        app:layout_constraintVertical_bias="0.228" />
+        app:layout_constraintVertical_bias="0.123" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
