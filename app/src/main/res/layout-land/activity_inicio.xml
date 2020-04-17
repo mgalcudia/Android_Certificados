@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.proyecto.Certificado.InicioActivity">
+
+
+    <TextView
+        android:id="@+id/textViewBienvenida"
+        android:layout_width="match_parent"
+        android:layout_height="102dp"
+        android:text="@string/textViewBienvenida"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.126" />
+
+    <Button
+        android:id="@+id/btnAgregarTitulo"
+
+        android:layout_width="339dp"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="12dp"
+        android:background="#8FDA03"
+        android:onClick="AgregarTitulo"
+        android:text="@string/btnAgregarTitulo"
+        android:textColor="@android:color/widget_edittext_dark"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toTopOf="@+id/btnBuscarCertificados"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnlistarTitulos"
+        android:layout_width="339dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="12dp"
+        android:background="#8FDA03"
+        android:onClick="listarTitulos"
+        android:text="@string/btnlistarTitulos"
+        android:textColor="@android:color/widget_edittext_dark"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toTopOf="@+id/btnHistorico"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/btnBuscarCertificados"
+        android:layout_width="339dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="12dp"
+        android:background="#8FDA03"
+        android:onClick="buscarCertificados"
+        android:text="@string/btnBuscarCertificados"
+        android:textColor="@android:color/widget_edittext_dark"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toTopOf="@+id/btnCerrarSesion"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnHistorico"
+        android:layout_width="339dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="12dp"
+        android:background="#8FDA03"
+        android:onClick="irHistorico"
+        android:text="@string/btnirHistorico"
+        android:textColor="@android:color/widget_edittext_dark"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toTopOf="@+id/btnCerrarSesion"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/btnCerrarSesion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:background="#8FDA03"
+        android:onClick="cerrarSesion"
+        android:text="@string/btncerrarSesion"
+        android:textColor="@android:color/widget_edittext_dark"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
