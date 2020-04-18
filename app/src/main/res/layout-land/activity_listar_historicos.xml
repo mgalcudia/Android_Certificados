@@ -4,39 +4,35 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.proyecto.Certificado.ListarCertificados">
-
+    tools:context="com.proyecto.Certificado.ListarHistoricos">
 
     <TextView
         android:id="@+id/textViewListarhistorico"
-        android:layout_width="355dp"
-        android:layout_height="129dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="562dp"
-
-        android:text="@string/textViewListarTodo"
+        android:layout_width="740dp"
+        android:layout_height="99dp"
+        android:layout_marginTop="10dp"
+        android:text=""
         android:textAlignment="center"
         android:textSize="25sp"
-
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ListView
         android:id="@+id/listaDatosCertificados"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="120dp"
+        android:layout_height="match_parent"
 
+        android:layout_marginTop="70dp"
+        android:layout_marginBottom="24dp"
         android:background="#608BC34A"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-
-        app:layout_constraintTop_toBottomOf="@+id/textViewListarhistorico" />
-
+        app:layout_constraintTop_toBottomOf="@+id/textViewListarhistorico"
+        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
