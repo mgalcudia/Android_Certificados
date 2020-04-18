@@ -30,19 +30,13 @@ public class HistoricoCertificado extends AppCompatActivity {
     DatabaseReference databaseReference;
     FirebaseAuth mAuth;
     final ArrayList<String> anios = new ArrayList<>();
-
-    private NumberPicker numberPicker;
-    String strnumberpicker, stranioselecionado;
+    String stranioselecionado;
     ListView listViewCertificado;
     ArrayAdapter<String> arrayAdapterCertificado;
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_historico_certificado);
-
         FirebaseApp.initializeApp(this);
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference();
@@ -76,15 +70,14 @@ public class HistoricoCertificado extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot objSnaptshot : dataSnapshot.getChildren()) {
                     String  c = objSnaptshot.child("anioCorte").getValue(String.class);
-
                     if(!anios.contains(c)){
-
                         anios.add(c);
                     }
+                    arrayAdapterCertificado = new ArrayAdapter<>
+                            (HistoricoCertificado.this,android.R.layout.simple_list_item_activated_1, anios);
+                    listViewCertificado.setAdapter(arrayAdapterCertificado);
                 }
-                arrayAdapterCertificado = new ArrayAdapter<>
-                (HistoricoCertificado.this,android.R.layout.simple_list_item_activated_1, anios);
-                listViewCertificado.setAdapter(arrayAdapterCertificado);
+
             }
 
             @Override

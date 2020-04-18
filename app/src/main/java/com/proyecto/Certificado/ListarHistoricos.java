@@ -31,7 +31,6 @@ public class ListarHistoricos extends AppCompatActivity {
     private List<Certificados> listaCertificados = new ArrayList<>();
     ArrayAdapter<Certificados> arrayAdapterCertificado;
     Certificados certificadosSeleccionado;
-
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
     FirebaseAuth mAuth;

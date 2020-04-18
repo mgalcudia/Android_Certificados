@@ -29,7 +29,6 @@ public class ListarCertificados extends AppCompatActivity {
     private List <Certificados> listaCertificados = new ArrayList<>();
     ArrayAdapter<Certificados> arrayAdapterCertificado;
     Certificados certificadosSeleccionado;
-
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
     FirebaseAuth mAuth;
@@ -41,7 +40,6 @@ public class ListarCertificados extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listar_certificados);
-
         FirebaseApp.initializeApp(this);
          firebaseDatabase = FirebaseDatabase.getInstance();
          databaseReference = firebaseDatabase.getReference();
@@ -53,9 +51,7 @@ public class ListarCertificados extends AppCompatActivity {
          listViewCertificado.setOnItemClickListener(new AdapterView.OnItemClickListener() {
              @Override
              public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
                   certificadosSeleccionado = (Certificados) parent.getItemAtPosition(position);
-
                  Intent intent= new Intent(ListarCertificados.this,MostrarCertificado.class);
                  Bundle bundle= new Bundle();
                  bundle.putSerializable("certificado",certificadosSeleccionado);
