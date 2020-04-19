@@ -32,6 +32,7 @@ public class RegistroActivity extends AppCompatActivity {
 
     //variables
     private EditText mEditTextName;
+
     private EditText mEditTextEmail;
     private EditText mEditTextPassword;
 
