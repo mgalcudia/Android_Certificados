@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,14 +16,26 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.security.MessageDigest;
+import java.util.Arrays;
+
+import javax.crypto.Cipher;
+import javax.crypto.KeyGenerator;
+import javax.crypto.SecretKey;
+import javax.crypto.spec.SecretKeySpec;
+
 public class LoginActivity extends AppCompatActivity {
 
     private EditText mEditTextEmail;
     private EditText mEditTextPassword;
-    private String password="";
+    private String password="",ecriptPass;
     private String email="";
     //creamos el objeto firebase
     private FirebaseAuth mAuth;
+
+
+    public LoginActivity() {
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +61,14 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void loginUser() {
-        mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        try {
+            ecriptPass = encriptar(email,password);
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        mAuth.signInWithEmailAndPassword(email,ecriptPass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task2) {
                 if (task2.isSuccessful()){
@@ -63,6 +83,30 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+
+    private String encriptar(String email, String password) throws Exception {
+
+        SecretKeySpec secretKey = generateKey(email);
+        Cipher cipher = Cipher.getInstance("AES");
+        cipher.init(Cipher.ENCRYPT_MODE, secretKey);
+        byte[] datosEncriptadosBytes = cipher.doFinal(password.getBytes());
+        String datosEncriptadosString = Base64.encodeToString(datosEncriptadosBytes, Base64.DEFAULT);
+        return datosEncriptadosString;
+
+    }
+
+    private SecretKeySpec generateKey(String llave) throws Exception {
+
+        MessageDigest sha = MessageDigest.getInstance("SHA-256");
+        byte[] key = llave.getBytes("UTF-8");
+        key = sha.digest(key);
+        SecretKeySpec secretKey = new SecretKeySpec(key, "AES");
+        return secretKey;
+    }
+
+
+
+
 
 
 }

@@ -7,8 +7,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 
+import android.util.Base64;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -19,9 +19,14 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.proyecto.Certificado.modelo.Persona;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.security.MessageDigest;
+import java.util.Arrays;
 import java.util.Objects;
+
+import javax.crypto.Cipher;
+import javax.crypto.KeyGenerator;
+import javax.crypto.SecretKey;
+import javax.crypto.spec.SecretKeySpec;
 
 public class RegistroActivity extends AppCompatActivity {
 
@@ -33,11 +38,13 @@ public class RegistroActivity extends AppCompatActivity {
     ///Variables que vamos a registrar
     private String name="";
     private String email="";
-    private String password="";
+    private String password="",ecriptPass;
 
     //Creamos el objeto FIrebase
     FirebaseAuth mAuth;
     DatabaseReference mDatabaseReference;
+
+
 
 
     @Override
@@ -81,7 +88,13 @@ public class RegistroActivity extends AppCompatActivity {
 
 
     private void RegisterUSer() {
-        mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+
+        try {
+            ecriptPass = encriptar(email,password);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        mAuth.createUserWithEmailAndPassword(email,ecriptPass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
 
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
@@ -91,7 +104,7 @@ public class RegistroActivity extends AppCompatActivity {
                     p.setIdUSer(idUSer);
                     p.setEmail(email);
                     p.setName(name);
-                    p.setPassword(password);
+                    p.setPassword(ecriptPass);
                     mDatabaseReference.child("user").child(idUSer).setValue(p).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task2) {
@@ -115,5 +128,28 @@ public class RegistroActivity extends AppCompatActivity {
         });
 
     }
+
+    private String encriptar(String email, String password) throws Exception {
+
+        SecretKeySpec secretKey = generateKey(email);
+        Cipher cipher = Cipher.getInstance("AES");
+        cipher.init(Cipher.ENCRYPT_MODE, secretKey);
+        byte[] datosEncriptadosBytes = cipher.doFinal(password.getBytes());
+        String datosEncriptadosString = Base64.encodeToString(datosEncriptadosBytes, Base64.DEFAULT);
+        return datosEncriptadosString;
+
+    }
+
+    private SecretKeySpec generateKey(String llave) throws Exception {
+
+        MessageDigest sha = MessageDigest.getInstance("SHA-256");
+        byte[] key = llave.getBytes("UTF-8");
+        key = sha.digest(key);
+        SecretKeySpec secretKey = new SecretKeySpec(key, "AES");
+        return secretKey;
+    }
+
+
+
 }
 
