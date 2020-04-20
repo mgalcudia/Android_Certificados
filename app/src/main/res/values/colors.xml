@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimary">#179FA7</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
+    <color name="botones">#00843D</color>
+    <color name="btnAcceder">#59D59F</color>
+    <color name="BtnCerrarSesion">#C182A0</color>
+    <color name="FondoFormulario">#EEEEEE</color>
+    <color name="FondoPantalla">#FFFFFF</color>
+    <color name="FondoPantallaInterior">#e8f1cd</color>
+    <color name="btnMain">	#FFFFFF</color>
+    <color name="listaCertificado">#f3f8e6</color>
 </resources>

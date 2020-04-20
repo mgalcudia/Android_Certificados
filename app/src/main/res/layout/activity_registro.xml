@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegistroActivity">
+    tools:context=".RegistroActivity"
+    android:background="@color/FondoPantalla">
 
     <EditText
         android:id="@+id/editTexname"
@@ -46,10 +47,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="104dp"
-        android:background="@android:color/holo_red_dark"
+        android:background="@color/btnAcceder"
+        android:textColor="@color/btnMain"
         android:onClick="registrar"
         android:text="@string/btnRegistroUsuario"
-        android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

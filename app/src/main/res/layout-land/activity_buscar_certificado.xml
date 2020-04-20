@@ -4,13 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context="com.proyecto.Certificado.BuscarCertificado">
+    tools:context="com.proyecto.Certificado.BuscarCertificado"
+    android:background="@color/FondoPantallaInterior">
 
     <ListView
         android:id="@+id/listviewBuscarCertificado"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#608BC34A"
+        android:background="@color/listaCertificado"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

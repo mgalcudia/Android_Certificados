@@ -4,16 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@color/FondoPantalla">
 
 
     <TextView
         android:id="@+id/textViewBienvenida"
+        android:background="@color/FondoFormulario"
         android:layout_width="324dp"
         android:layout_height="141dp"
         android:layout_marginTop="152dp"
         android:text="@string/textViewBienvenida"
         android:textAlignment="center"
+        android:gravity="center"
         android:textSize="36sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
@@ -25,8 +28,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:background="@color/colorAccent"
+        android:background="@color/btnAcceder"
         android:onClick="irRegistrar"
+        android:textColor="@color/btnMain"
 
         android:text="@string/btnirRegistro"
         app:layout_constraintEnd_toEndOf="parent"
@@ -38,8 +42,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="140dp"
-        android:background="#8FDA03"
+        android:background="@color/btnAcceder"
         android:onClick="irLoguin"
+        android:textColor="@color/btnMain"
         android:text="@string/btnirLoguin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

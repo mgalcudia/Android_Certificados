@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.proyecto.Certificado.ListarHistoricos">
+    tools:context="com.proyecto.Certificado.ListarHistoricos"
+    android:background="@color/FondoPantallaInterior">
 
     <TextView
         android:id="@+id/textViewListarhistorico"
@@ -13,7 +14,9 @@
         android:layout_marginTop="10dp"
         android:text=""
         android:textAlignment="center"
+        android:gravity="center"
         android:textSize="25sp"
+        android:background="@color/FondoFormulario"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,10 +27,9 @@
         android:id="@+id/listaDatosCertificados"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
         android:layout_marginTop="70dp"
         android:layout_marginBottom="24dp"
-        android:background="#608BC34A"
+        android:background="@color/listaCertificado"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

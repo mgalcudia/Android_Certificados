@@ -61,6 +61,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void loginUser() {
+      /*
         try {
             ecriptPass = encriptar(email,password);
 
@@ -68,7 +69,9 @@ public class LoginActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        mAuth.signInWithEmailAndPassword(email,ecriptPass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+       */
+
+        mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task2) {
                 if (task2.isSuccessful()){
@@ -105,8 +108,9 @@ public class LoginActivity extends AppCompatActivity {
     }
 
 
+    public void irRecupPass(View view) {
 
 
-
-
+        startActivity(new Intent(LoginActivity.this, RecuperarPass.class));
+    }
 }

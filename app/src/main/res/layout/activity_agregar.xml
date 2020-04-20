@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    android:background="@color/FondoPantallaInterior">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -19,6 +20,8 @@
             android:layout_height="70dp"
             android:layout_marginTop="20dp"
             android:text="@string/textViewAgregaTitulo"
+            android:background="@color/FondoFormulario"
+            android:gravity="center"
             android:textAlignment="center"
             android:textSize="30sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -130,7 +133,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="80dp"
             android:text="@string/btnSubirCertificado"
-            android:background="#8FDA03"
+            android:background="@color/botones"
+            android:textColor="@color/btnMain"
             android:onClick="AgregarUnTitulo"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

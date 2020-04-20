@@ -89,13 +89,15 @@ public class RegistroActivity extends AppCompatActivity {
 
 
     private void RegisterUSer() {
-
+/*
         try {
             ecriptPass = encriptar(email,password);
         }catch (Exception e){
             e.printStackTrace();
         }
-        mAuth.createUserWithEmailAndPassword(email,ecriptPass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+
+ */
+        mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
 
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
@@ -105,7 +107,7 @@ public class RegistroActivity extends AppCompatActivity {
                     p.setIdUSer(idUSer);
                     p.setEmail(email);
                     p.setName(name);
-                    p.setPassword(ecriptPass);
+                    p.setPassword(password);
                     mDatabaseReference.child("user").child(idUSer).setValue(p).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task2) {
@@ -129,7 +131,7 @@ public class RegistroActivity extends AppCompatActivity {
         });
 
     }
-
+//https://www.youtube.com/watch?v=Ik7YmSd6dRQ
     private String encriptar(String email, String password) throws Exception {
 
         SecretKeySpec secretKey = generateKey(email);

@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity">
+    tools:context=".LoginActivity"
+    android:background="@color/FondoPantalla">
 
     <EditText
         android:id="@+id/editTexEmail"
@@ -36,16 +37,35 @@
         android:id="@+id/btnLoguear"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="48dp"
-        android:background="#8FDA03"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/btnAcceder"
+        android:textColor="@color/btnMain"
         android:onClick="Loguearse"
         android:text="@string/btniniciarSesion"
-        android:textColor="@android:color/widget_edittext_dark"
-        app:layout_constraintBottom_toBottomOf="parent"
+
+        app:layout_constraintBottom_toTopOf="@+id/btnirRecuppass"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editPassword"
-        app:layout_constraintVertical_bias="0.123" />
+        app:layout_constraintVertical_bias="0.175" />
+
+    <Button
+        android:id="@+id/btnirRecuppass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="260dp"
+        android:background="@color/btnAcceder"
+        android:textColor="@color/btnMain"
+        android:onClick="irRecupPass"
+        android:text="He olvidade mi contraseña"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnLoguear" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

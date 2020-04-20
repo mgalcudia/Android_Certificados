@@ -4,18 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.proyecto.Certificado.InicioActivity">
+    tools:context="com.proyecto.Certificado.InicioActivity"
+    android:background="@color/FondoPantallaInterior">
 
 
     <TextView
         android:id="@+id/textViewBienvenida"
-        android:layout_width="403dp"
-        android:layout_height="154dp"
+        android:layout_width="339dp"
+        android:layout_height="143dp"
         android:layout_marginTop="40dp"
         android:layout_marginBottom="8dp"
         android:text="@string/textViewBienvenida"
+        android:gravity="center"
         android:textAlignment="center"
-        android:textSize="36sp"
+        android:textSize="30sp"
+        android:background="@color/FondoFormulario"
         app:layout_constraintBottom_toTopOf="@+id/btnAgregarTitulo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -29,10 +32,11 @@
         android:layout_height="wrap_content"
 
         android:layout_marginBottom="40dp"
-        android:background="#8FDA03"
+        android:background="@color/botones"
+        android:textColor="@color/btnMain"
         android:onClick="AgregarTitulo"
         android:text="@string/btnAgregarTitulo"
-        android:textColor="@android:color/widget_edittext_dark"
+
         app:layout_constraintBottom_toTopOf="@+id/btnlistarTitulos"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -42,10 +46,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="40dp"
-        android:background="#8FDA03"
+        android:background="@color/botones"
+        android:textColor="@color/btnMain"
         android:onClick="listarTitulos"
         android:text="@string/btnlistarTitulos"
-        android:textColor="@android:color/widget_edittext_dark"
+
         app:layout_constraintBottom_toTopOf="@+id/btnBuscarCertificados"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -55,10 +60,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="40dp"
-        android:background="#8FDA03"
+        android:background="@color/botones"
+        android:textColor="@color/btnMain"
         android:onClick="buscarCertificados"
         android:text="@string/btnBuscarCertificados"
-        android:textColor="@android:color/widget_edittext_dark"
+
         app:layout_constraintBottom_toTopOf="@+id/btnHistorico"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -69,10 +75,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="40dp"
-        android:background="#8FDA03"
+        android:background="@color/botones"
+        android:textColor="@color/btnMain"
         android:onClick="irHistorico"
         android:text="@string/btnirHistorico"
-        android:textColor="@android:color/widget_edittext_dark"
+
         app:layout_constraintBottom_toTopOf="@+id/btnCerrarSesion"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -83,10 +90,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="40dp"
-        android:background="#8FDA03"
+        android:background="@color/BtnCerrarSesion"
+        android:textColor="@color/btnMain"
         android:onClick="cerrarSesion"
         android:text="@string/btncerrarSesion"
-        android:textColor="@android:color/widget_edittext_dark"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

@@ -13,6 +13,7 @@
     <string name="btnModificarCertificado">Modify certificate</string>
     <string name="btnirHistorico">historical certificates</string>
     <string name="btncerrarSesion">Sign off</string>
+    <string name="btnrecuperarPass">Recover password</string>
 
 
     //Edit text

@@ -4,16 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@color/FondoPantalla">
 
 
     <TextView
         android:id="@+id/textViewBienvenida"
-        android:layout_width="717dp"
-        android:layout_height="95dp"
+        android:layout_width="700dp"
+        android:layout_height="60dp"
         android:layout_marginTop="36dp"
+        android:background="@color/FondoFormulario"
         android:text="@string/textViewBienvenida"
         android:textAlignment="center"
+        android:gravity="center"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.447"
@@ -25,9 +28,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:background="@color/colorAccent"
+        android:background="@color/btnAcceder"
         android:onClick="irRegistrar"
-
+        android:textColor="@color/btnMain"
         android:text="@string/btnirRegistro"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -38,10 +41,11 @@
         android:id="@+id/btnirLoguin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:background="#8FDA03"
+        android:layout_marginTop="15dp"
+        android:background="@color/btnAcceder"
         android:onClick="irLoguin"
         android:text="@string/btnirLoguin"
+        android:textColor="@color/btnMain"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
