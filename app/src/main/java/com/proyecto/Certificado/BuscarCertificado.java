@@ -4,8 +4,10 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.MenuItemCompat;
 
+import android.content.ClipData;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -28,6 +30,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import static java.util.Objects.*;
+
 public class BuscarCertificado extends AppCompatActivity implements SearchView.OnQueryTextListener{
 
     private List <Certificados> listaCertificados = new ArrayList<>();
@@ -38,6 +42,8 @@ public class BuscarCertificado extends AppCompatActivity implements SearchView.O
     DatabaseReference databaseReference;
     FirebaseAuth mAuth;
     ListView listViewCertificado;
+    String cadena= null;
+    Bundle bundleText= new Bundle();
 
 
 
@@ -69,7 +75,7 @@ public class BuscarCertificado extends AppCompatActivity implements SearchView.O
 
     private void listarcertificado( String newText) {
         listViewCertificado.setAdapter(null);
-        String idUSer= Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
+        String idUSer= requireNonNull(mAuth.getCurrentUser()).getUid();
         if(newText.length()>0){
             databaseReference.child("certificado/"+idUSer).orderByChild("nombreCertificado").startAt(newText).endAt(newText+'\uf8ff').addValueEventListener(new ValueEventListener() {
                 @Override
@@ -96,8 +102,8 @@ public class BuscarCertificado extends AppCompatActivity implements SearchView.O
 
     public boolean onCreateOptionsMenu(Menu menu){
       getMenuInflater().inflate(R.menu.menu_buscador,menu);
-        MenuItem item= menu.findItem(R.id.buscador);
-      //  SearchView searchView = (SearchView) MenuItemCompat.getActionView(item);
+     //   MenuItem item= menu.findItem(R.id.buscador);
+
        // searchView.setOnQueryTextListener(this);
         return true;
     }
@@ -108,8 +114,17 @@ public class BuscarCertificado extends AppCompatActivity implements SearchView.O
         switch (item.getItemId()){
 
             case R.id.buscador:
-                SearchView searchView = (SearchView) MenuItemCompat.getActionView(item);
-                searchView.setOnQueryTextListener(this);
+                SearchView searchView = (SearchView) item.getActionView();
+                if(cadena != null){
+                    searchView.setOnQueryTextListener(this);
+                    searchView.getImeOptions();
+                    searchView.isSubmitButtonEnabled();
+                    searchView.setQuery(cadena,true);
+                }
+                else {
+                    searchView.setOnQueryTextListener(this);
+                }
+
                 break;
             case R.id.atras:
                 onBackPressed();
@@ -130,6 +145,8 @@ public class BuscarCertificado extends AppCompatActivity implements SearchView.O
 
     @Override
     public boolean onQueryTextChange(String newText) {
+
+        cadena= newText;
         //va mostrando las coincidencias
         listarcertificado(newText);
         return false;
@@ -147,6 +164,19 @@ public class BuscarCertificado extends AppCompatActivity implements SearchView.O
         super.onBackPressed();
     }
 
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle bundleText) {
+        super.onSaveInstanceState(Objects.<Bundle>requireNonNull(bundleText));
+            bundleText.putString("busqueda",cadena);
 
+    }
 
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState){
+        super.onRestoreInstanceState(Objects.<Bundle>requireNonNull(savedInstanceState));
+        cadena = savedInstanceState.getString("busqueda");
+
+        onQueryTextChange(cadena);
+
+    }
 }

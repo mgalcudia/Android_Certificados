@@ -151,6 +151,11 @@ public class AgregarActivity extends AppCompatActivity {
                 && !strcreditosCertificado.isEmpty() && !srtfechaFinCertificado.isEmpty()) {
             final String idCertificado = (UUID.randomUUID().toString());
             c.setIdCertificado(idCertificado);
+            nombreCertificado.setText("");
+            entidadEmisora.setText("");
+            horasCertificado.setText("");
+            creditosCertificado.setText("");
+
             mDatabase.child("certificado/" + idUsuario).child(idCertificado).setValue(c).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task2) {
@@ -162,10 +167,7 @@ public class AgregarActivity extends AppCompatActivity {
                         map2.put("anioCorte", strnumberpicker);
                         mDatabase.child("historicoCorte/" + idUsuario).child(idCertificado).setValue(map2);
                         Toast.makeText(AgregarActivity.this, "Curso registrado correctamente", Toast.LENGTH_LONG).show();
-                        nombreCertificado.setText("");
-                        entidadEmisora.setText("");
-                        horasCertificado.setText("");
-                        creditosCertificado.setText("");
+
 
                     } else {
                         Toast.makeText(AgregarActivity.this,

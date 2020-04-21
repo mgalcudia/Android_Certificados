@@ -88,7 +88,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:background="@color/botones"
+        android:background="@color/BtnCerrarSesion"
         android:textColor="@color/btnMain"
         android:onClick="cerrarSesion"
         android:text="@string/btncerrarSesion"
