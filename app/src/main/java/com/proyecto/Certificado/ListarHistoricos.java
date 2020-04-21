@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -93,6 +95,33 @@ public class ListarHistoricos extends AppCompatActivity {
             }
         });
     }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.atras:{
+                onBackPressed();
+                break;
+
+            }
+
+        }
+        return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        //Si llamas super.onBackPressed(), esto internamente ejecuta finish().
+        super.onBackPressed();
+    }
+
 }
 
 

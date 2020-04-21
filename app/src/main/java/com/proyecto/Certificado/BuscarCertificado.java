@@ -97,9 +97,29 @@ public class BuscarCertificado extends AppCompatActivity implements SearchView.O
     public boolean onCreateOptionsMenu(Menu menu){
       getMenuInflater().inflate(R.menu.menu_buscador,menu);
         MenuItem item= menu.findItem(R.id.buscador);
-        SearchView searchView = (SearchView) MenuItemCompat.getActionView(item);
-        searchView.setOnQueryTextListener(this);
+      //  SearchView searchView = (SearchView) MenuItemCompat.getActionView(item);
+       // searchView.setOnQueryTextListener(this);
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        switch (item.getItemId()){
+
+            case R.id.buscador:
+                SearchView searchView = (SearchView) MenuItemCompat.getActionView(item);
+                searchView.setOnQueryTextListener(this);
+                break;
+            case R.id.atras:
+                onBackPressed();
+                break;
+
+        }
+
+
+
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -121,8 +141,11 @@ public class BuscarCertificado extends AppCompatActivity implements SearchView.O
 
     }
 
-
-
+    @Override
+    public void onBackPressed() {
+        //Si llamas super.onBackPressed(), esto internamente ejecuta finish().
+        super.onBackPressed();
+    }
 
 
 

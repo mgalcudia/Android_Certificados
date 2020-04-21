@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.proyecto.Certificado.MostrarCertificado">
+    tools:context="com.proyecto.Certificado.MostrarCertificado"
+    android:background="@color/FondoPantalla">
 
     <TextView
         android:id="@+id/textViewCertiSelec"
@@ -12,6 +13,8 @@
         android:layout_height="70dp"
         android:layout_marginTop="20dp"
         android:text="@string/textViewCertificadoSelec"
+        android:gravity="center"
+        android:background="@color/FondoFormulario"
         android:textAlignment="center"
         android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -122,7 +125,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:background="#F32718"
+        android:background="@color/BtnCerrarSesion"
+        android:textColor="@color/btnMain"
         android:onClick="borrarCertificado"
         android:text="@string/btnBorrarCertificado"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -137,7 +141,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="108dp"
-        android:background="#8FDA03"
+        android:background="@color/btnAcceder"
+        android:textColor="@color/btnMain"
         android:onClick="modificarCertificado"
         android:text="@string/btnModificarCertificado"
         app:layout_constraintEnd_toEndOf="parent"
