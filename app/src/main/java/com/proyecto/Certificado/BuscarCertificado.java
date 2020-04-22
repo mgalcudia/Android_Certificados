@@ -115,16 +115,12 @@ public class BuscarCertificado extends AppCompatActivity implements SearchView.O
 
             case R.id.buscador:
                 SearchView searchView = (SearchView) item.getActionView();
+                searchView.setFocusable(true);
+                searchView.setIconified(false);
+                searchView.setOnQueryTextListener(this);
                 if(cadena != null){
-                    searchView.setOnQueryTextListener(this);
-                    searchView.getImeOptions();
-                    searchView.isSubmitButtonEnabled();
                     searchView.setQuery(cadena,true);
                 }
-                else {
-                    searchView.setOnQueryTextListener(this);
-                }
-
                 break;
             case R.id.atras:
                 onBackPressed();

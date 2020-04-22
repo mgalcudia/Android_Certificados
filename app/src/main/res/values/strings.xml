@@ -36,6 +36,7 @@
     <string name="textViewListarTodo">Aggregated Certificate Listings</string>
     <string name="textViewLMostrarHistorico">Historical years presented</string>
     <string name="textViewLlistarHistorico">Certificates presented in the year: %1$s</string>
+    <string name="textViewFechaFin">Certificate end date</string>
 
     //item
     <string name="itemBuscador">Search </string>

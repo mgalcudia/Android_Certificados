@@ -2,15 +2,18 @@ package com.proyecto.Certificado;
 
 import android.app.ActionBar;
 import android.app.DatePickerDialog;
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.NumberPicker;
 import android.widget.SearchView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -39,7 +42,8 @@ public class AgregarActivity extends AppCompatActivity {
     private NumberPicker numberPicker;
     String strnumberpicker;
     //variables titulo
-    private EditText nombreCertificado, entidadEmisora, horasCertificado, creditosCertificado, fechaFinCertificado;
+    private EditText nombreCertificado, entidadEmisora, horasCertificado, creditosCertificado;
+    private TextView fechaFinCertificado;
 
     String strnombreCertificado, strentidadEmisora, strhorasCertificado, strcreditosCertificado, srtfechaFinCertificado;
     //variables Firebase
@@ -80,16 +84,26 @@ public class AgregarActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-
+                //ocultarTeclado();
                 DatePickerDialog dialogoDeFecha =
                         new DatePickerDialog(AgregarActivity.this, listenerDatepicker, anio, mes, dia);
                 //Muestra
                 dialogoDeFecha.show();
             }
+
+
         });
 
     }
+    private void ocultarTeclado() {
+        View view= this.getCurrentFocus();
+        if (view!=null){
+            InputMethodManager inputMethodManager= (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(),0);
+        }
 
+
+    }
 
     //Creacion de listener para el datepicker
     private DatePickerDialog.OnDateSetListener listenerDatepicker = new DatePickerDialog.OnDateSetListener() {

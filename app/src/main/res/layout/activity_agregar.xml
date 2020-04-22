@@ -86,30 +86,29 @@
             app:layout_constraintStart_toEndOf="@+id/editTextHorasCertificado"
             app:layout_constraintTop_toBottomOf="@+id/editTextEntidadCertificado" />
 
-        <EditText
+        <TextView
             android:id="@+id/editTextFechaFin"
             android:layout_width="140dp"
             android:layout_height="45dp"
-            android:layout_marginTop="55dp"
-            android:layout_marginEnd="24dp"
+            android:layout_marginTop="28dp"
+            android:layout_marginEnd="15dp"
             android:autofillHints=""
             android:clickable="true"
-            android:ems="10"
-
+            android:textSize="17sp"
+            android:ems="25"
             android:focusable="true"
             android:inputType="none"
             android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextCreditoCertificado" />
+            app:layout_constraintTop_toBottomOf="@+id/textViewFechaFin" />
 
         <TextView
             android:id="@+id/textViewCorteBolsa"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="24dp"
             android:text="@string/textViewCorteBolsa"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.094"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editTextHorasCertificado" />
 
@@ -142,5 +141,17 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/numberPickerAnoCorte"
             app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/textViewFechaFin"
+            android:layout_width="145dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="24dp"
+            android:text="@string/textViewFechaFin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.678"
+            app:layout_constraintStart_toEndOf="@+id/textViewCorteBolsa"
+            app:layout_constraintTop_toBottomOf="@+id/editTextCreditoCertificado" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

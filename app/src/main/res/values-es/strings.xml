@@ -40,6 +40,7 @@
     <string name="textViewListarTodo">Listados de certificados agregados</string>
     <string name="textViewLMostrarHistorico">Historico años presentado</string>
     <string name="textViewLlistarHistorico">Certificados presentados en el año: %1$s</string>
+    <string name="textViewFechaFin">Fecha fin certificado</string>
 
 
 

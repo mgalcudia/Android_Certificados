@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.NumberPicker;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -35,7 +36,8 @@ public class MostrarCertificado extends AppCompatActivity {
     private NumberPicker numberPicker;
     String strnumberpicker;
     //variables titulo
-    private EditText nombreCertificado, entidadEmisora, horasCertificado, creditosCertificado, fechaFinCertificado;
+    private EditText nombreCertificado, entidadEmisora, horasCertificado, creditosCertificado;
+    TextView fechaFinCertificado;
     int anioCorte;
     String strnombreCertificado, strentidadEmisora, strhorasCertificado,
             strcreditosCertificado, srtfechaFinCertificado, stridCertificado, strIdUser;
