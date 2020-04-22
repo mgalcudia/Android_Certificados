@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/ic_index_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".RecuperarPass"></activity>
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -29,6 +29,7 @@
         <activity android:name=".InicioActivity" />
         <activity android:name=".RegistroActivity" />
         <activity android:name=".LoginActivity" />
+        <activity android:name=".RecuperarPass" />
     </application>
 
 </manifest>

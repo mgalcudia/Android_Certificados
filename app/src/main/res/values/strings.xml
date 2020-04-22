@@ -40,6 +40,8 @@
 
     //item
     <string name="itemBuscador">Search </string>
+    <string name="cursoReg">Curso registrado correctamente</string>
+    <string name="NoSePuedeReg">No se puede registrar el curso</string>
 
 
 </resources>

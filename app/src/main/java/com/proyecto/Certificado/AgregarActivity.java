@@ -1,24 +1,18 @@
 package com.proyecto.Certificado;
 
-import android.app.ActionBar;
 import android.app.DatePickerDialog;
-import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.NumberPicker;
-import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.MenuItemCompat;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -44,11 +38,11 @@ public class AgregarActivity extends AppCompatActivity {
     //variables titulo
     private EditText nombreCertificado, entidadEmisora, horasCertificado, creditosCertificado;
     private TextView fechaFinCertificado;
-
     String strnombreCertificado, strentidadEmisora, strhorasCertificado, strcreditosCertificado, srtfechaFinCertificado;
     //variables Firebase
     private FirebaseAuth mAuth;
     private DatabaseReference mDatabase;
+
 
 
     @Override
@@ -78,9 +72,11 @@ public class AgregarActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
-        //Hace que el datepicker se muestre al clickear el edixText
 
-        fechaFinCertificado.setOnClickListener(new View.OnClickListener() {
+        /**
+         * Hace que el datepicker se muestre al clickear el edixText
+         */
+                fechaFinCertificado.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -95,17 +91,13 @@ public class AgregarActivity extends AppCompatActivity {
         });
 
     }
-    private void ocultarTeclado() {
-        View view= this.getCurrentFocus();
-        if (view!=null){
-            InputMethodManager inputMethodManager= (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-            inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(),0);
-        }
 
 
-    }
 
-    //Creacion de listener para el datepicker
+
+    /**
+     * Creacion de listener para el datepicker
+     */
     private DatePickerDialog.OnDateSetListener listenerDatepicker = new DatePickerDialog.OnDateSetListener() {
         @Override
         public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
@@ -118,13 +110,18 @@ public class AgregarActivity extends AppCompatActivity {
         }
     };
 
+    /**
+     *  Asigna el valor al TextView con la fecha
+     */
     public void asignarFechaEnEditText() {
         String fecha = String.format(Locale.getDefault(), "%02d-%02d-%02d", dia, mes + 1, anio);
         //asigamos el valor del editText
         fechaFinCertificado.setText(fecha);
     }
 
-
+    /**
+     * Genera el numberpicker para seleccionar el año de corte de bolsa
+     */
     private void numberpicker() {
 
         numberPicker.setTextSize(55);
@@ -142,6 +139,11 @@ public class AgregarActivity extends AppCompatActivity {
 
     }
 
+    /**
+     *  Función para agregar un certificado al nodo del usuario dentro del nodo certificado.
+     *  a su vez registra los datos oportunos para generar el historico de cortes de bolsa a cada usuario
+     * @param view
+     */
     public void AgregarUnTitulo(View view) {
         strnombreCertificado = nombreCertificado.getText().toString().trim();
         strentidadEmisora = entidadEmisora.getText().toString().trim();
@@ -169,7 +171,7 @@ public class AgregarActivity extends AppCompatActivity {
             entidadEmisora.setText("");
             horasCertificado.setText("");
             creditosCertificado.setText("");
-
+            //Añade los datos del certificado
             mDatabase.child("certificado/" + idUsuario).child(idCertificado).setValue(c).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task2) {
@@ -179,13 +181,14 @@ public class AgregarActivity extends AppCompatActivity {
                         map2.put("nombreCertificado", strnombreCertificado);
                         map2.put("idCertificado", idCertificado);
                         map2.put("anioCorte", strnumberpicker);
+                        // Anade los datos al historico
                         mDatabase.child("historicoCorte/" + idUsuario).child(idCertificado).setValue(map2);
-                        Toast.makeText(AgregarActivity.this, "Curso registrado correctamente", Toast.LENGTH_LONG).show();
+                        Toast.makeText(AgregarActivity.this, R.string.cursoReg, Toast.LENGTH_LONG).show();
 
 
                     } else {
                         Toast.makeText(AgregarActivity.this,
-                                "No se puede registrar el curso", Toast.LENGTH_LONG).show();
+                                R.string.NoSePuedeReg, Toast.LENGTH_LONG).show();
                     }
                 }
             });
@@ -195,13 +198,23 @@ public class AgregarActivity extends AppCompatActivity {
 
     }
 
-
+    /**
+     *  Al crear la actividad se inyecta el menu personalizado
+     * @param menu
+     * @return super.onCreateOptionsMenu(menu);
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu,menu);
         return super.onCreateOptionsMenu(menu);
     }
 
+    /**
+     *   Funcion para  identificar el item seleccionado por el usuario en el menu superior
+     *   personalizado.
+     * @param item
+     * @return true
+     */
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
@@ -215,10 +228,13 @@ public class AgregarActivity extends AppCompatActivity {
         return true;
     }
 
+    /**
+     * Funcion que nos devuelve a la actividad anterior
+     * internamente hace un finish de la actividad actual
+     */
     @Override
     public void onBackPressed() {
-        //Si llamas super.onBackPressed(), esto internamente ejecuta finish().
-        super.onBackPressed();
+      super.onBackPressed();
     }
 
 }
