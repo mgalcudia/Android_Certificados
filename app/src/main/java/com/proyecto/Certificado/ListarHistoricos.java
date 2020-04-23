@@ -1,8 +1,5 @@
 package com.proyecto.Certificado;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -12,7 +9,9 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
@@ -28,14 +27,15 @@ import java.util.List;
 import java.util.Objects;
 
 public class ListarHistoricos extends AppCompatActivity {
-
-
-    private List<Certificados> listaCertificados = new ArrayList<>();
-    ArrayAdapter<Certificados> arrayAdapterCertificado;
-    Certificados certificadosSeleccionado;
+    //Variables Firebase
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
     FirebaseAuth mAuth;
+
+   //Variables para mostrar los certificados del año
+    private List<Certificados> listaCertificados = new ArrayList<>();
+    ArrayAdapter<Certificados> arrayAdapterCertificado;
+    Certificados certificadosSeleccionado;
     ListView listViewCertificado;
     TextView mensaje;
     String anioCorteRecibido;
@@ -73,6 +73,10 @@ public class ListarHistoricos extends AppCompatActivity {
 
     }
 
+    /**
+     * Funcion obtiene los certificados asignado a un año de corte que recibe por parametro
+     * @param anioCorteRecibido
+     */
     private void listarcertificado(String anioCorteRecibido) {
 
         String idUSer= Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
@@ -96,13 +100,23 @@ public class ListarHistoricos extends AppCompatActivity {
         });
     }
 
-
+    /**
+     *  Al crear la actividad se inyecta el menu personalizado
+     * @param menu
+     * @return boolean;
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu,menu);
-        return super.onCreateOptionsMenu(menu);
+        return true;
     }
 
+    /**
+     *   Funcion para  identificar el item seleccionado por el usuario en el menu superior
+     *   personalizado.
+     * @param item
+     * @return boolean
+     */
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
@@ -116,9 +130,12 @@ public class ListarHistoricos extends AppCompatActivity {
         return true;
     }
 
+    /**
+     * Funcion que nos devuelve a la actividad anterior
+     * internamente hace un finish de la actividad actual
+     */
     @Override
     public void onBackPressed() {
-        //Si llamas super.onBackPressed(), esto internamente ejecuta finish().
         super.onBackPressed();
     }
 

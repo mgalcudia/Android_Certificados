@@ -1,18 +1,17 @@
 package com.proyecto.Certificado;
 
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-
-import android.util.Base64;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -21,20 +20,12 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.proyecto.Certificado.modelo.Persona;
 
-import java.security.MessageDigest;
-import java.util.Arrays;
 import java.util.Objects;
-
-import javax.crypto.Cipher;
-import javax.crypto.KeyGenerator;
-import javax.crypto.SecretKey;
-import javax.crypto.spec.SecretKeySpec;
 
 public class RegistroActivity extends AppCompatActivity {
 
     //variables
     private EditText mEditTextName;
-
     private EditText mEditTextEmail;
     private EditText mEditTextPassword;
 
@@ -64,6 +55,10 @@ public class RegistroActivity extends AppCompatActivity {
 
     }
 
+    /**
+     *  Funcion que comprueba que los campos estan completos
+     * @param view
+     */
     public void registrar(View view) {
         name= mEditTextName.getText().toString().trim();
         email= mEditTextEmail.getText().toString().trim();
@@ -72,35 +67,25 @@ public class RegistroActivity extends AppCompatActivity {
         if(!name.isEmpty()&& !email.isEmpty()&& !password.isEmpty()){
 
             if (password.length()>=6){
-
-                //Si completo ok registramos al usuario
                 RegisterUSer();
-
             }else{
 
-                Toast.makeText(RegistroActivity.this, "La logitud del password debe mayor de 6 caracteres", Toast.LENGTH_LONG).show();
+                Toast.makeText(RegistroActivity.this, R.string.passLongtud, Toast.LENGTH_LONG).show();
             }
         }else{
 
-            Toast.makeText(RegistroActivity.this, "Debe completar los campos", Toast.LENGTH_LONG).show();
+            Toast.makeText(RegistroActivity.this, R.string.completaCampos, Toast.LENGTH_LONG).show();
 
         }
 
     }
 
 
-
+    /**
+     * Funcion que registra al usuario usando funcion de firebase
+     */
     private void RegisterUSer() {
-/*
-        try {
-            ecriptPass = encriptar(email,password);
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-
- */
         mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
@@ -114,53 +99,44 @@ public class RegistroActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<Void> task2) {
                             if(task2.isSuccessful()){
-                                Toast.makeText(RegistroActivity.this, "Usuario Registado", Toast.LENGTH_LONG).show();
+                                Toast.makeText(RegistroActivity.this, R.string.usuarioRegistrado, Toast.LENGTH_LONG).show();
                                 startActivity(new Intent(RegistroActivity.this, InicioActivity.class));
                                 finish();
 
                             }else {
                                 Toast.makeText(RegistroActivity.this,
-                                        "No se puede ir a la otra actividad", Toast.LENGTH_LONG).show();
+                                        R.string.usuarioNoBd, Toast.LENGTH_LONG).show();
                             }
-
                         }
                     });
 
                 }else{
-                    Toast.makeText(RegistroActivity.this, "No se ha podido registra", Toast.LENGTH_LONG).show();
+
+                    Toast.makeText(RegistroActivity.this,
+                            R.string.usuarioNoRegistrado, Toast.LENGTH_LONG).show();
                 }
             }
         });
 
     }
-//https://www.youtube.com/watch?v=Ik7YmSd6dRQ
-    private String encriptar(String email, String password) throws Exception {
 
-        SecretKeySpec secretKey = generateKey(email);
-        Cipher cipher = Cipher.getInstance("AES");
-        cipher.init(Cipher.ENCRYPT_MODE, secretKey);
-        byte[] datosEncriptadosBytes = cipher.doFinal(password.getBytes());
-        String datosEncriptadosString = Base64.encodeToString(datosEncriptadosBytes, Base64.DEFAULT);
-        return datosEncriptadosString;
-
-    }
-
-    private SecretKeySpec generateKey(String llave) throws Exception {
-
-        MessageDigest sha = MessageDigest.getInstance("SHA-256");
-        byte[] key = llave.getBytes("UTF-8");
-        key = sha.digest(key);
-        SecretKeySpec secretKey = new SecretKeySpec(key, "AES");
-        return secretKey;
-    }
-
-
+    /**
+     *  Al crear la actividad se inyecta el menu personalizado
+     * @param menu
+     * @return boolean;
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu,menu);
-        return super.onCreateOptionsMenu(menu);
+        return true;
     }
 
+    /**
+     *   Funcion para  identificar el item seleccionado por el usuario en el menu superior
+     *   personalizado.
+     * @param item
+     * @return boolean
+     */
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
@@ -174,12 +150,15 @@ public class RegistroActivity extends AppCompatActivity {
         return true;
     }
 
+
+    /**
+     * Funcion que nos devuelve a la actividad anterior
+     * internamente hace un finish de la actividad actual
+     */
     @Override
     public void onBackPressed() {
-        //Si llamas super.onBackPressed(), esto internamente ejecuta finish().
         super.onBackPressed();
     }
-
 
 }
 

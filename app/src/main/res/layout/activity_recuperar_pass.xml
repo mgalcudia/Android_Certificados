@@ -29,7 +29,7 @@
         android:layout_marginBottom="396dp"
         android:background="@color/btnAcceder"
         android:textColor="@color/btnMain"
-        android:onClick="RecuperarPass"
+        android:onClick="recuperarContrasenia"
         android:text="@string/btnrecuperarPass"
 
         app:layout_constraintBottom_toBottomOf="parent"

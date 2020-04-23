@@ -1,8 +1,5 @@
 package com.proyecto.Certificado;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -11,8 +8,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.NumberPicker;
-import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
@@ -21,20 +19,24 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.proyecto.Certificado.modelo.Certificados;
 
 import java.util.ArrayList;
 import java.util.Objects;
 
 public class HistoricoCertificado extends AppCompatActivity {
 
+    //variables Firebase
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
     FirebaseAuth mAuth;
+
+    //Lista para almacenar los diferentes años de corte
     final ArrayList<String> anios = new ArrayList<>();
+    //variables para mostrar la lista de años y mandar la seleccionada a otra actividad
     String stranioselecionado;
     ListView listViewCertificado;
     ArrayAdapter<String> arrayAdapterCertificado;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,6 +65,9 @@ public class HistoricoCertificado extends AppCompatActivity {
 
     }
 
+    /**
+     * Funcion que obtiene los años de corte que tiene asociado algun certificado
+     */
     private void obtenerAniosCorte() {
 
         String idUSer = Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
@@ -72,10 +77,11 @@ public class HistoricoCertificado extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot objSnaptshot : dataSnapshot.getChildren()) {
                     String  c = objSnaptshot.child("anioCorte").getValue(String.class);
+                    //si hay algun año agregado no lo vuelve a agregar
                     if(!anios.contains(c)){
                         anios.add(c);
                     }
-                    Toast.makeText(HistoricoCertificado.this, "Años"+anios, Toast.LENGTH_SHORT).show();
+
                     arrayAdapterCertificado = new ArrayAdapter<>
                             (HistoricoCertificado.this,android.R.layout.simple_list_item_activated_1, anios);
                     listViewCertificado.setAdapter(arrayAdapterCertificado);
@@ -93,12 +99,23 @@ public class HistoricoCertificado extends AppCompatActivity {
 
     }
 
+    /**
+     *  Al crear la actividad se inyecta el menu personalizado
+     * @param menu
+     * @return boolean;
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu,menu);
-        return super.onCreateOptionsMenu(menu);
+        return true;
     }
 
+    /**
+     *   Funcion para  identificar el item seleccionado por el usuario en el menu superior
+     *   personalizado.
+     * @param item
+     * @return boolean
+     */
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
@@ -112,9 +129,12 @@ public class HistoricoCertificado extends AppCompatActivity {
         return true;
     }
 
+    /**
+     * Funcion que nos devuelve a la actividad anterior
+     * internamente hace un finish de la actividad actual
+     */
     @Override
     public void onBackPressed() {
-        //Si llamas super.onBackPressed(), esto internamente ejecuta finish().
         super.onBackPressed();
     }
 

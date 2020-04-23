@@ -1,8 +1,5 @@
 package com.proyecto.Certificado;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -11,7 +8,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
@@ -23,6 +22,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.proyecto.Certificado.modelo.Certificados;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -31,6 +31,7 @@ public class ListarCertificados extends AppCompatActivity {
     private List <Certificados> listaCertificados = new ArrayList<>();
     ArrayAdapter<Certificados> arrayAdapterCertificado;
     Certificados certificadosSeleccionado;
+    //variables firebase
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
     FirebaseAuth mAuth;
@@ -66,6 +67,9 @@ public class ListarCertificados extends AppCompatActivity {
 
     }
 
+    /**
+     * Funcion para listar los certificados del usuario ordenados por el año de corte de mas reciente a mas antiguo
+     */
     private void listarcertificado() {
 
         String idUSer= Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
@@ -76,6 +80,8 @@ public class ListarCertificados extends AppCompatActivity {
                 for (DataSnapshot objSnaptshot: dataSnapshot.getChildren()){
                     Certificados c= objSnaptshot.getValue(Certificados.class);
                     listaCertificados.add(c);
+                    //invierte el orden de la lista
+                    Collections.reverse(listaCertificados);
                     arrayAdapterCertificado = new ArrayAdapter<>
                             (ListarCertificados.this, android.R.layout.simple_list_item_activated_1, listaCertificados);
                     listViewCertificado.setAdapter(arrayAdapterCertificado);
@@ -89,13 +95,23 @@ public class ListarCertificados extends AppCompatActivity {
         });
     }
 
-
+    /**
+     *  Al crear la actividad se inyecta el menu personalizado
+     * @param menu
+     * @return boolean;
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu,menu);
-        return super.onCreateOptionsMenu(menu);
+        return true;
     }
 
+    /**
+     *   Funcion para  identificar el item seleccionado por el usuario en el menu superior
+     *   personalizado.
+     * @param item
+     * @return boolean
+     */
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
@@ -109,9 +125,12 @@ public class ListarCertificados extends AppCompatActivity {
         return true;
     }
 
+    /**
+     * Funcion que nos devuelve a la actividad anterior
+     * internamente hace un finish de la actividad actual
+     */
     @Override
     public void onBackPressed() {
-        //Si llamas super.onBackPressed(), esto internamente ejecuta finish().
         super.onBackPressed();
     }
 

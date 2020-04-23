@@ -36,7 +36,7 @@ public class BuscarCertificado extends AppCompatActivity implements SearchView.O
     FirebaseAuth mAuth;
 
     ListView listViewCertificado;
-
+    //variable que almacena lo que se escribe en el campo search
     String cadena= null;
 
 
@@ -109,7 +109,6 @@ public class BuscarCertificado extends AppCompatActivity implements SearchView.O
      * @param menu
      * @return boolean;
      */
-
     public boolean onCreateOptionsMenu(Menu menu){
       getMenuInflater().inflate(R.menu.menu_buscador,menu);
         return true;
@@ -139,9 +138,6 @@ public class BuscarCertificado extends AppCompatActivity implements SearchView.O
                 break;
 
         }
-
-
-
         return super.onOptionsItemSelected(item);
     }
 

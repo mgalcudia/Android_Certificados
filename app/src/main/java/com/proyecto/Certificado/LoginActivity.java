@@ -1,30 +1,18 @@
 package com.proyecto.Certificado;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Base64;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-
-import java.security.MessageDigest;
-import java.util.Arrays;
-
-import javax.crypto.Cipher;
-import javax.crypto.KeyGenerator;
-import javax.crypto.SecretKey;
-import javax.crypto.spec.SecretKeySpec;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -36,8 +24,6 @@ public class LoginActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
 
 
-    public LoginActivity() {
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +34,11 @@ public class LoginActivity extends AppCompatActivity {
         mEditTextPassword=findViewById(R.id.editPassword);
     }
 
-
+    /**
+     * Funcion que comprueba que los campos de textos este escritos y en caso afirmativo manda
+     * a la funcion del loguin
+     * @param view
+     */
     public void Loguearse(View view) {
         password= mEditTextPassword.getText().toString().trim();
         email= mEditTextEmail.getText().toString().trim();
@@ -58,20 +48,14 @@ public class LoginActivity extends AppCompatActivity {
 
         }else{
 
-            Toast.makeText(LoginActivity.this, "Debe completar los campos", Toast.LENGTH_LONG).show();
+            Toast.makeText(LoginActivity.this, R.string.compleCampos, Toast.LENGTH_LONG).show();
         }
     }
 
+    /**
+     * Funcion para loguear al usuario
+     */
     private void loginUser() {
-      /*
-        try {
-            ecriptPass = encriptar(email,password);
-
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-
-       */
 
         mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
@@ -82,12 +66,65 @@ public class LoginActivity extends AppCompatActivity {
 
                 }else{
 
-                    Toast.makeText(LoginActivity.this, "No se puede iniciar la sesion compruebe los datos", Toast.LENGTH_LONG).show();
+                    Toast.makeText(LoginActivity.this, R.string.noLoguin, Toast.LENGTH_LONG).show();
                 }
 
             }
         });
     }
+
+    /**
+     *  Funcion que envia al usuario a la activity para recuperar la contraseña
+     * @param view
+     */
+    public void irRecupPass(View view) {
+        startActivity(new Intent(LoginActivity.this, RecuperarPass.class));
+    }
+
+
+    /**
+     *  Al crear la actividad se inyecta el menu personalizado
+     * @param menu
+     * @return boolean;
+     */
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    /**
+     *   Funcion para  identificar el item seleccionado por el usuario en el menu superior
+     *   personalizado.
+     * @param item
+     * @return boolean
+     */
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.atras:{
+                onBackPressed();
+                break;
+
+            }
+
+        }
+        return true;
+    }
+
+    /**
+     * Funcion que nos devuelve a la actividad anterior
+     * internamente hace un finish de la actividad actual
+     */
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
+/*
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+    /// Estas funciones no tienen utilidad en la aplicacion las he mantenido ya que me resultan
+    /// interesante la forma en la que encripta.
+    ///https://www.youtube.com/watch?v=Ik7YmSd6dRQ
 
     private String encriptar(String email, String password) throws Exception {
 
@@ -109,37 +146,8 @@ public class LoginActivity extends AppCompatActivity {
         return secretKey;
     }
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+ */
 
-    public void irRecupPass(View view) {
-
-
-        startActivity(new Intent(LoginActivity.this, RecuperarPass.class));
-    }
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu,menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.atras:{
-                onBackPressed();
-                break;
-
-            }
-
-        }
-        return true;
-    }
-
-    @Override
-    public void onBackPressed() {
-        //Si llamas super.onBackPressed(), esto internamente ejecuta finish().
-        super.onBackPressed();
-    }
 
 }

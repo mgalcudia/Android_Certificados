@@ -1,8 +1,5 @@
 package com.proyecto.Certificado;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,6 +12,9 @@ import android.widget.NumberPicker;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -26,7 +26,6 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
-import java.util.UUID;
 
 public class MostrarCertificado extends AppCompatActivity {
     //Iniciamos variable fechafinal
@@ -94,7 +93,7 @@ public class MostrarCertificado extends AppCompatActivity {
         Certificados certificado = null;
         if (objetoEnviado != null) {
             certificado = (Certificados) objetoEnviado.getSerializable("certificado");
-            Toast.makeText(this, "certificado"+certificado.getNombreCertificado(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.certificado)+certificado.getNombreCertificado(), Toast.LENGTH_SHORT).show();
 
             assert certificado != null;
             nombreCertificado.setText(certificado.getNombreCertificado());
@@ -115,6 +114,9 @@ public class MostrarCertificado extends AppCompatActivity {
 
     }
 
+    /**
+     * Funcion que genera el numberpicker para asignar el año de corte de bolsa
+     */
     private void numberpicker() {
         numberPicker.setTextSize(55);
         numberPicker.setMinValue(2000);
@@ -142,14 +144,19 @@ public class MostrarCertificado extends AppCompatActivity {
             asignarFechaEnEditText();
         }
     };
-
+    /**
+     *  Asigna el valor al TextView con la fecha
+     */
     public void asignarFechaEnEditText() {
         String fecha = String.format(Locale.getDefault(), "%02d-%02d-%02d", dia, mes + 1, anio);
         //asigamos el valor del editText
         fechaFinCertificado.setText(fecha);
     }
 
-
+    /**
+     * Funcion que elimina el certificado  y a la vez lo elimina del historico Corte
+     * @param view
+     */
     public void borrarCertificado(View view) {
         mDatabase.child("certificado/" + strIdUser).child(stridCertificado).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
@@ -157,12 +164,12 @@ public class MostrarCertificado extends AppCompatActivity {
                 if (task2.isSuccessful()){
 
                     mDatabase.child("historicoCorte/" + strIdUser).child(stridCertificado).removeValue();
-                    Toast.makeText(MostrarCertificado.this, "Curso borrado correctamente", Toast.LENGTH_LONG).show();
+                    Toast.makeText(MostrarCertificado.this, R.string.cursoBorrado, Toast.LENGTH_LONG).show();
                     startActivity(new Intent(MostrarCertificado.this, InicioActivity.class));
                     finish();
                 }else{
 
-                    Toast.makeText(MostrarCertificado.this, "Curso no se ha borrado correctamente", Toast.LENGTH_LONG).show();
+                    Toast.makeText(MostrarCertificado.this, R.string.cursoNoBorrado, Toast.LENGTH_LONG).show();
                 }
 
             }
@@ -170,8 +177,12 @@ public class MostrarCertificado extends AppCompatActivity {
 
     }
 
+    /**
+     * Funcion para modificar el certificado a su vez modifica su registro en historico corte
+     * @param view
+     */
     public void modificarCertificado(View view) {
-        Toast.makeText(MostrarCertificado.this, "Año corte" + stridCertificado, Toast.LENGTH_LONG).show();
+       // Toast.makeText(MostrarCertificado.this, "Año corte" + stridCertificado, Toast.LENGTH_LONG).show();
         strnombreCertificado = nombreCertificado.getText().toString().trim();
         strentidadEmisora = entidadEmisora.getText().toString().trim();
         strhorasCertificado = horasCertificado.getText().toString().trim();
@@ -204,11 +215,11 @@ public class MostrarCertificado extends AppCompatActivity {
                         map2.put("anioCorte", strnumberpicker);
 
                         mDatabase.child("historicoCorte/" + strIdUser).child(stridCertificado).setValue(map2);
-                        Toast.makeText(MostrarCertificado.this, "Curso modificado correctamente", Toast.LENGTH_LONG).show();
+                        Toast.makeText(MostrarCertificado.this, R.string.cursoModificado, Toast.LENGTH_LONG).show();
 
                     } else {
                         Toast.makeText(MostrarCertificado.this,
-                                "No se pudo modificar el curso", Toast.LENGTH_LONG).show();
+                                R.string.cursoNoModificado, Toast.LENGTH_LONG).show();
                     }
                 }
             });
@@ -218,13 +229,24 @@ public class MostrarCertificado extends AppCompatActivity {
     }
 
 
-
+    /**
+     *  Al crear la actividad se inyecta el menu personalizado
+     * @param menu
+     * @return boolean;
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu,menu);
-        return super.onCreateOptionsMenu(menu);
+        //return super.onCreateOptionsMenu(menu);
+        return true;
     }
 
+    /**
+     *   Funcion para  identificar el item seleccionado por el usuario en el menu superior
+     *   personalizado.
+     * @param item
+     * @return boolean
+     */
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
@@ -238,9 +260,12 @@ public class MostrarCertificado extends AppCompatActivity {
         return true;
     }
 
+    /**
+     * Funcion que nos devuelve a la actividad anterior
+     * internamente hace un finish de la actividad actual
+     */
     @Override
     public void onBackPressed() {
-        //Si llamas super.onBackPressed(), esto internamente ejecuta finish().
         super.onBackPressed();
     }
 

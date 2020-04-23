@@ -42,6 +42,22 @@
     <string name="itemBuscador">Search </string>
     <string name="cursoReg">Curso registrado correctamente</string>
     <string name="NoSePuedeReg">No se puede registrar el curso</string>
+    <string name="sesionCerrada">Sesion Cerrada</string>
+    <string name="noLoguin">No se puede iniciar la sesion compruebe los datos</string>
+    <string name="compleCampos">Debe completar los campos</string>
+    <string name="certificado">certificado</string>
+    <string name="cursoBorrado">Curso borrado correctamente</string>
+    <string name="cursoNoBorrado">Curso no se ha borrado correctamente</string>
+    <string name="cursoModificado">Curso modificado correctamente</string>
+    <string name="cursoNoModificado">No se pudo modificar el curso</string>
+    <string name="emailNoValido">Introduzca un Email Válido para recuperar la contraseña</string>
+    <string name="emailEnviadoPass">Se ha enviado un correo electronico para reestablecer su contraseña</string>
+    <string name="emailNoEnviadoPass">No se ha podido mandar el correo para restableces si contraseña</string>
+    <string name="passLongtud">La logitud del password debe mayor de 6 caracteres</string>
+    <string name="completaCampos">Debe completar los campos</string>
+    <string name="usuarioRegistrado">Usuario Registado</string>
+    <string name="usuarioNoRegistrado">No se ha podido registrar al usuario</string>
+    <string name="usuarioNoBd">No se ha podido agregar al usuario a la base de datos</string>
 
 
 </resources>
