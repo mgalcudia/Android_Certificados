@@ -20,6 +20,7 @@ public class InicioActivity extends AppCompatActivity {
 
     }
 
+
     /**
      * Funcion que envia al usuario a la activity para agregar certificados
      * @param view

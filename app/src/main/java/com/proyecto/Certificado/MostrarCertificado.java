@@ -162,13 +162,11 @@ public class MostrarCertificado extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<Void> task2) {
                 if (task2.isSuccessful()){
-
                     mDatabase.child("historicoCorte/" + strIdUser).child(stridCertificado).removeValue();
                     Toast.makeText(MostrarCertificado.this, R.string.cursoBorrado, Toast.LENGTH_LONG).show();
                     startActivity(new Intent(MostrarCertificado.this, InicioActivity.class));
                     finish();
                 }else{
-
                     Toast.makeText(MostrarCertificado.this, R.string.cursoNoBorrado, Toast.LENGTH_LONG).show();
                 }
 

@@ -40,7 +40,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         if(mAuth.getCurrentUser() !=null){
-
             startActivity(new Intent(MainActivity.this,InicioActivity.class));
             finish();
         }

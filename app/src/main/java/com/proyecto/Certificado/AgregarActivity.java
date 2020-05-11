@@ -74,7 +74,7 @@ public class AgregarActivity extends AppCompatActivity {
 
 
         /**
-         * Hace que el datepicker se muestre al clickear el edixText
+         * Hace que el datepicker se muestre al clickear el TextView
          */
                 fechaFinCertificado.setOnClickListener(new View.OnClickListener() {
 
@@ -86,15 +86,8 @@ public class AgregarActivity extends AppCompatActivity {
                 //Muestra
                 dialogoDeFecha.show();
             }
-
-
         });
-
     }
-
-
-
-
     /**
      * Creacion de listener para el datepicker
      */
@@ -109,7 +102,6 @@ public class AgregarActivity extends AppCompatActivity {
             asignarFechaEnEditText();
         }
     };
-
     /**
      *  Asigna el valor al TextView con la fecha
      */
@@ -184,8 +176,6 @@ public class AgregarActivity extends AppCompatActivity {
                         // Anade los datos al historico
                         mDatabase.child("historicoCorte/" + idUsuario).child(idCertificado).setValue(map2);
                         Toast.makeText(AgregarActivity.this, R.string.cursoReg, Toast.LENGTH_LONG).show();
-
-
                     } else {
                         Toast.makeText(AgregarActivity.this,
                                 R.string.NoSePuedeReg, Toast.LENGTH_LONG).show();

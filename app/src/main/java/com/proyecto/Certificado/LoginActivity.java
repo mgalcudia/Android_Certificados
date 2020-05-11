@@ -120,6 +120,7 @@ public class LoginActivity extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
     }
+
 /*
   ///////////////////////////////////////////////////////////////////////////////////////////////
     /// Estas funciones no tienen utilidad en la aplicacion las he mantenido ya que me resultan

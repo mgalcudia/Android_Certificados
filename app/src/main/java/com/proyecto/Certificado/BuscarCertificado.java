@@ -70,8 +70,6 @@ public class BuscarCertificado extends AppCompatActivity implements SearchView.O
         });
 
     }
-
-
     /**
      *  Funcion para listar los certificados que comiencen por lo que introduce el usuario conforme
      *  introduce datos
@@ -81,7 +79,8 @@ public class BuscarCertificado extends AppCompatActivity implements SearchView.O
         listViewCertificado.setAdapter(null);
         String idUSer= requireNonNull(mAuth.getCurrentUser()).getUid();
         if(newText.length()>0){
-            databaseReference.child("certificado/"+idUSer).orderByChild("nombreCertificado").startAt(newText).endAt(newText+'\uf8ff').addValueEventListener(new ValueEventListener() {
+            databaseReference.child("certificado/"+idUSer).orderByChild("nombreCertificado").startAt(newText).endAt(newText+'\uf8ff')
+                    .addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     listaCertificados.clear();
@@ -122,7 +121,6 @@ public class BuscarCertificado extends AppCompatActivity implements SearchView.O
      */
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-
         switch (item.getItemId()){
             case R.id.buscador:
                 SearchView searchView = (SearchView) item.getActionView();
@@ -136,7 +134,6 @@ public class BuscarCertificado extends AppCompatActivity implements SearchView.O
             case R.id.atras:
                 onBackPressed();
                 break;
-
         }
         return super.onOptionsItemSelected(item);
     }
@@ -161,12 +158,10 @@ public class BuscarCertificado extends AppCompatActivity implements SearchView.O
      */
     @Override
     public boolean onQueryTextChange(String newText) {
-
         cadena= newText;
         //va mostrando las coincidencias
         listarcertificado(newText);
         return false;
-
     }
 
     /**

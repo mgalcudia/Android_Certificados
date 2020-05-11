@@ -81,7 +81,6 @@ public class HistoricoCertificado extends AppCompatActivity {
                     if(!anios.contains(c)){
                         anios.add(c);
                     }
-
                     arrayAdapterCertificado = new ArrayAdapter<>
                             (HistoricoCertificado.this,android.R.layout.simple_list_item_activated_1, anios);
                     listViewCertificado.setAdapter(arrayAdapterCertificado);

@@ -71,7 +71,6 @@ public class ListarCertificados extends AppCompatActivity {
      * Funcion para listar los certificados del usuario ordenados por el año de corte de mas reciente a mas antiguo
      */
     private void listarcertificado() {
-
         String idUSer= Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
         databaseReference.child("certificado/"+idUSer).orderByChild("anioCorte").addValueEventListener(new ValueEventListener() {
             @Override

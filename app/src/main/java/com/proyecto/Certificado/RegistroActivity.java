@@ -51,8 +51,6 @@ public class RegistroActivity extends AppCompatActivity {
         mEditTextName =findViewById(R.id.editTexname);
         mEditTextEmail =findViewById(R.id.editTexEmail);
         mEditTextPassword=findViewById(R.id.editPassword);
-
-
     }
 
     /**
@@ -102,16 +100,13 @@ public class RegistroActivity extends AppCompatActivity {
                                 Toast.makeText(RegistroActivity.this, R.string.usuarioRegistrado, Toast.LENGTH_LONG).show();
                                 startActivity(new Intent(RegistroActivity.this, InicioActivity.class));
                                 finish();
-
                             }else {
                                 Toast.makeText(RegistroActivity.this,
                                         R.string.usuarioNoBd, Toast.LENGTH_LONG).show();
                             }
                         }
                     });
-
                 }else{
-
                     Toast.makeText(RegistroActivity.this,
                             R.string.usuarioNoRegistrado, Toast.LENGTH_LONG).show();
                 }
@@ -143,13 +138,10 @@ public class RegistroActivity extends AppCompatActivity {
             case R.id.atras:{
                 onBackPressed();
                 break;
-
             }
-
         }
         return true;
     }
-
 
     /**
      * Funcion que nos devuelve a la actividad anterior
